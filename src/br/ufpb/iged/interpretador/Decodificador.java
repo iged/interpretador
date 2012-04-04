@@ -99,5 +99,7 @@ public class Decodificador {
 			}
 		}
 		return exp;
+		
+		//teste
 	}
 }
