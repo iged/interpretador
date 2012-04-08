@@ -20,7 +20,7 @@
 	<property name = "src.dir" value = 
 		"src/br/ufpb/iged/interpretador/bytecodeassembler/grammars"/>
 	<property name = "dest.dir" value = 
-			"src/br/ufpb/iged/interpretador/bytecodeassembler/lexer"/>
+			"src/br/ufpb/iged/interpretador/bytecodeassembler/parser"/>
 	<property name="grammar" value = "Assembler.g"/>
 	
 
