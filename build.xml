@@ -1,0 +1,39 @@
+<!--<project name="antlr3_and_ant" default="antlr_classpath" basedir=".">-->
+ 
+<!-- Check if ANTLR3 can be found in the classpath -->
+<!--<target name="antlr_classpath">
+<whichresource property="antlr.in.classpath" class="org.antlr.Tool" />
+<fail message="ANTLR3 not found via CLASSPATH ${java.class.path}">
+<condition>
+<not>
+<isset property="antlr.in.classpath"/>
+</not>
+</condition>
+</fail>
+<echo>ANTLR3 found via CLASSPATH</echo>
+</target>
+ 
+</project>-->
+
+<project name="Interpretador" default="gerar" basedir=".">
+ 
+	<property name = "src.dir" value = 
+		"src/br/ufpb/iged/interpretador/bytecodeassembler/grammars"/>
+	<property name = "dest.dir" value = 
+			"src/br/ufpb/iged/interpretador/bytecodeassembler/lexer"/>
+	<property name="grammar" value = "Assembler.g"/>
+	
+
+	<target name="gerar">
+		<java classname="org.antlr.Tool" fork="true" failonerror="true">
+			<arg value="-verbose"/>
+			<arg value="-make"/>
+			<arg value="-o"/>
+			<arg path="${dest.dir}"/>
+			<arg path="${src.dir}/${grammar}"/>
+		</java>
+	</target>
+ 
+ 
+</project>
+
