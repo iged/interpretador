@@ -1,6 +1,6 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-08 02:52:07
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-08 03:05:27
 
-package br.ufpb.iged.interpretador.bytecodeassembler.lexer;
+package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
 import org.antlr.runtime.*;
 import java.util.Stack;
