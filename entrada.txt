@@ -1,0 +1,2 @@
+INIT LISTA l;
+CREATE_REF l.inicio;
