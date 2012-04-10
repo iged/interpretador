@@ -46,6 +46,10 @@ deletar : 'DELETE_INT' ID
         | 'DELETE_REF' ID
         ;
 
+NAME_REF: ('dado' | 'prox');
+
+NULL: ('null' | 'NULL'); 
+
 INT: '-'? '0'..'9'+ ;
 
 TYPE_STRUCT : 'LISTA'
@@ -53,10 +57,6 @@ TYPE_STRUCT : 'LISTA'
             ;
 
 ID:  ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
-
-NAME_REF: ('dado' | 'prox');
-
-NULL: ('null' | 'NULL'); 
 
 //LETRA: ('a'..'z' | 'A'..'Z');
 
