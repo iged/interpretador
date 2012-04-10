@@ -23,8 +23,17 @@
 			"src/br/ufpb/iged/interpretador/bytecodeassembler/parser"/>
 	<property name="grammar" value = "Assembler.g"/>
 	
-
-	<target name="gerar">
+    
+    <target name="clean">
+    	<delete>
+			<fileset dir="${dest.dir}">
+	    		<include name="*.java"/>
+				<include name="*.tokens"/>
+			</fileset>
+		</delete>
+	</target>
+    	
+	<target name="gerar" depends="clean">
 		<java classname="org.antlr.Tool" fork="true" failonerror="true">
 			<arg value="-verbose"/>
 			<arg value="-make"/>

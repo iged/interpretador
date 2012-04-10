@@ -1,4 +1,4 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-08 03:05:26
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-10 00:21:37
 
 package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class AssemblerParser extends Parser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "INT", "NOVA_LINHA", "TYPE_STRUCT", "WS", "':'", "'ADD'", "'CREATE_INT'", "'CREATE_NODE'", "'CREATE_REF'", "'DELETE_INT'", "'DELETE_NODE'", "'DELETE_REF'", "'DIV'", "'INIT'", "'JMP'", "'MULT'", "'NULL'", "'READ_INFO'", "'READ_INT'", "'READ_INTC'", "'READ_REF'", "'READ_RN'", "'READ_VET'", "'SUB'", "'WRITE_INFO'", "'WRITE_INT'", "'WRITE_REF'", "'WRITE_RN'", "'WRITE_VET'", "'dado'", "'prox'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "INT", "NOVA_LINHA", "TYPE_STRUCT", "WS", "':'", "'ADD'", "'CREATE_INT'", "'CREATE_NODE'", "'CREATE_REF'", "'DELETE_INT'", "'DELETE_NODE'", "'DELETE_REF'", "'DIV'", "'INIT'", "'JMP'", "'MULT'", "'NULL'", "'READ_INFO'", "'READ_INT'", "'READ_INTC'", "'READ_REF'", "'READ_RN'", "'READ_VET'", "'SUB'", "'WRITE_INFO'", "'WRITE_INT'", "'WRITE_REF'", "'WRITE_RN'", "'WRITE_VET'", "'dado'", "'null'", "'prox'"
     };
 
     public static final int EOF=-1;
@@ -41,6 +41,7 @@ public class AssemblerParser extends Parser {
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
+    public static final int T__36=36;
     public static final int ID=4;
     public static final int INT=5;
     public static final int NOVA_LINHA=6;
@@ -726,7 +727,7 @@ public class AssemblerParser extends Parser {
 
                     match(input,ID,FOLLOW_ID_in_ler287); 
 
-                    if ( (input.LA(1) >= 34 && input.LA(1) <= 35) ) {
+                    if ( input.LA(1)==34||input.LA(1)==36 ) {
                         input.consume();
                         state.errorRecovery=false;
                     }
@@ -774,10 +775,10 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "escrever"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:1: escrever : ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID ( 'dado' | 'prox' ) ( 'NULL' )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( 'NULL' )? );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:1: escrever : ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID ( 'dado' | 'prox' ) ( 'null' | 'NULL' )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( 'null' | 'NULL' )? );
     public final void escrever() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:10: ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID ( 'dado' | 'prox' ) ( 'NULL' )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( 'NULL' )? )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:10: ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID ( 'dado' | 'prox' ) ( 'null' | 'NULL' )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( 'null' | 'NULL' )? )
             int alt10=5;
             switch ( input.LA(1) ) {
             case 30:
@@ -833,13 +834,13 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:12: 'WRITE_RN' ID ( 'dado' | 'prox' ) ( 'NULL' )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:12: 'WRITE_RN' ID ( 'dado' | 'prox' ) ( 'null' | 'NULL' )?
                     {
                     match(input,32,FOLLOW_32_in_escrever358); 
 
                     match(input,ID,FOLLOW_ID_in_escrever360); 
 
-                    if ( (input.LA(1) >= 34 && input.LA(1) <= 35) ) {
+                    if ( input.LA(1)==34||input.LA(1)==36 ) {
                         input.consume();
                         state.errorRecovery=false;
                     }
@@ -849,18 +850,26 @@ public class AssemblerParser extends Parser {
                     }
 
 
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:44: ( 'NULL' )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:44: ( 'null' | 'NULL' )?
                     int alt8=2;
                     int LA8_0 = input.LA(1);
 
-                    if ( (LA8_0==21) ) {
+                    if ( (LA8_0==21||LA8_0==35) ) {
                         alt8=1;
                     }
                     switch (alt8) {
                         case 1 :
-                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:44: 'NULL'
+                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
                             {
-                            match(input,21,FOLLOW_21_in_escrever370); 
+                            if ( input.LA(1)==21||input.LA(1)==35 ) {
+                                input.consume();
+                                state.errorRecovery=false;
+                            }
+                            else {
+                                MismatchedSetException mse = new MismatchedSetException(null,input);
+                                throw mse;
+                            }
+
 
                             }
                             break;
@@ -873,31 +882,39 @@ public class AssemblerParser extends Parser {
                 case 4 :
                     // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:40:12: 'WRITE_INFO' ID
                     {
-                    match(input,29,FOLLOW_29_in_escrever384); 
+                    match(input,29,FOLLOW_29_in_escrever390); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever386); 
+                    match(input,ID,FOLLOW_ID_in_escrever392); 
 
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:12: 'WRITE_REF' ID ( 'NULL' )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:12: 'WRITE_REF' ID ( 'null' | 'NULL' )?
                     {
-                    match(input,31,FOLLOW_31_in_escrever399); 
+                    match(input,31,FOLLOW_31_in_escrever405); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever401); 
+                    match(input,ID,FOLLOW_ID_in_escrever407); 
 
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:27: ( 'NULL' )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:27: ( 'null' | 'NULL' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
-                    if ( (LA9_0==21) ) {
+                    if ( (LA9_0==21||LA9_0==35) ) {
                         alt9=1;
                     }
                     switch (alt9) {
                         case 1 :
-                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:27: 'NULL'
+                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
                             {
-                            match(input,21,FOLLOW_21_in_escrever403); 
+                            if ( input.LA(1)==21||input.LA(1)==35 ) {
+                                input.consume();
+                                state.errorRecovery=false;
+                            }
+                            else {
+                                MismatchedSetException mse = new MismatchedSetException(null,input);
+                                throw mse;
+                            }
+
 
                             }
                             break;
@@ -958,27 +975,27 @@ public class AssemblerParser extends Parser {
                 case 1 :
                     // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:11: 'DELETE_INT' ID
                     {
-                    match(input,14,FOLLOW_14_in_deletar422); 
+                    match(input,14,FOLLOW_14_in_deletar434); 
 
-                    match(input,ID,FOLLOW_ID_in_deletar424); 
+                    match(input,ID,FOLLOW_ID_in_deletar436); 
 
                     }
                     break;
                 case 2 :
                     // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:45:11: 'DELETE_NODE' ID
                     {
-                    match(input,15,FOLLOW_15_in_deletar436); 
+                    match(input,15,FOLLOW_15_in_deletar448); 
 
-                    match(input,ID,FOLLOW_ID_in_deletar438); 
+                    match(input,ID,FOLLOW_ID_in_deletar450); 
 
                     }
                     break;
                 case 3 :
                     // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:11: 'DELETE_REF' ID
                     {
-                    match(input,16,FOLLOW_16_in_deletar450); 
+                    match(input,16,FOLLOW_16_in_deletar462); 
 
-                    match(input,ID,FOLLOW_ID_in_deletar452); 
+                    match(input,ID,FOLLOW_ID_in_deletar464); 
 
                     }
                     break;
@@ -1036,7 +1053,7 @@ public class AssemblerParser extends Parser {
     public static final BitSet FOLLOW_27_in_ler275 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ID_in_ler277 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_26_in_ler285 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_ler287 = new BitSet(new long[]{0x0000000C00000000L});
+    public static final BitSet FOLLOW_ID_in_ler287 = new BitSet(new long[]{0x0000001400000000L});
     public static final BitSet FOLLOW_set_in_ler289 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_22_in_ler303 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ID_in_ler305 = new BitSet(new long[]{0x0000000000000002L});
@@ -1047,19 +1064,17 @@ public class AssemblerParser extends Parser {
     public static final BitSet FOLLOW_33_in_escrever343 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ID_in_escrever345 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_32_in_escrever358 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever360 = new BitSet(new long[]{0x0000000C00000000L});
-    public static final BitSet FOLLOW_set_in_escrever362 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_21_in_escrever370 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_escrever384 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever386 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_escrever399 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever401 = new BitSet(new long[]{0x0000000000200002L});
-    public static final BitSet FOLLOW_21_in_escrever403 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_deletar422 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_deletar424 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_15_in_deletar436 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_deletar438 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_deletar450 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_deletar452 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_escrever360 = new BitSet(new long[]{0x0000001400000000L});
+    public static final BitSet FOLLOW_set_in_escrever362 = new BitSet(new long[]{0x0000000800200002L});
+    public static final BitSet FOLLOW_29_in_escrever390 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever392 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_escrever405 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever407 = new BitSet(new long[]{0x0000000800200002L});
+    public static final BitSet FOLLOW_14_in_deletar434 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_deletar436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_deletar448 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_deletar450 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_deletar462 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_deletar464 = new BitSet(new long[]{0x0000000000000002L});
 
 }

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-08 03:05:27
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-10 00:21:37
 
 package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
@@ -37,6 +37,7 @@ public class AssemblerLexer extends Lexer {
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
+    public static final int T__36=36;
     public static final int ID=4;
     public static final int INT=5;
     public static final int NOVA_LINHA=6;
@@ -659,8 +660,31 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:7: ( 'prox' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:9: 'prox'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:7: ( 'null' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:9: 'null'
+            {
+            match("null"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__35"
+
+    // $ANTLR start "T__36"
+    public final void mT__36() throws RecognitionException {
+        try {
+            int _type = T__36;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:7: ( 'prox' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:9: 'prox'
             {
             match("prox"); 
 
@@ -675,7 +699,7 @@ public class AssemblerLexer extends Lexer {
         	// do for sure before leaving
         }
     }
-    // $ANTLR end "T__35"
+    // $ANTLR end "T__36"
 
     // $ANTLR start "INT"
     public final void mINT() throws RecognitionException {
@@ -811,74 +835,55 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:3: ( 'a' .. 'z' | 'A' .. 'Z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )* )
-            int alt5=2;
-            int LA5_0 = input.LA(1);
-
-            if ( ((LA5_0 >= 'a' && LA5_0 <= 'z')) ) {
-                alt5=1;
-            }
-            else if ( ((LA5_0 >= 'A' && LA5_0 <= 'Z')) ) {
-                alt5=2;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:3: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )* )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:6: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
+            {
+            if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
+                input.consume();
             }
             else {
-                NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                MismatchedSetException mse = new MismatchedSetException(null,input);
+                recover(mse);
+                throw mse;
+            }
 
-                throw nvae;
+
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
+            loop4:
+            do {
+                int alt4=2;
+                int LA4_0 = input.LA(1);
+
+                if ( (LA4_0=='.'||(LA4_0 >= '0' && LA4_0 <= '9')||(LA4_0 >= 'A' && LA4_0 <= 'Z')||(LA4_0 >= 'a' && LA4_0 <= 'z')) ) {
+                    alt4=1;
+                }
+
+
+                switch (alt4) {
+            	case 1 :
+            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
+            	    {
+            	    if ( input.LA(1)=='.'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
+            	        input.consume();
+            	    }
+            	    else {
+            	        MismatchedSetException mse = new MismatchedSetException(null,input);
+            	        recover(mse);
+            	        throw mse;
+            	    }
+
+
+            	    }
+            	    break;
+
+            	default :
+            	    break loop4;
+                }
+            } while (true);
+
 
             }
-            switch (alt5) {
-                case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:5: 'a' .. 'z'
-                    {
-                    matchRange('a','z'); 
 
-                    }
-                    break;
-                case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:16: 'A' .. 'Z' ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
-                    {
-                    matchRange('A','Z'); 
-
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:25: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
-                    loop4:
-                    do {
-                        int alt4=2;
-                        int LA4_0 = input.LA(1);
-
-                        if ( (LA4_0=='.'||(LA4_0 >= '0' && LA4_0 <= '9')||(LA4_0 >= 'A' && LA4_0 <= 'Z')||(LA4_0 >= 'a' && LA4_0 <= 'z')) ) {
-                            alt4=1;
-                        }
-
-
-                        switch (alt4) {
-                    	case 1 :
-                    	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
-                    	    {
-                    	    if ( input.LA(1)=='.'||(input.LA(1) >= '0' && input.LA(1) <= '9')||(input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
-                    	        input.consume();
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop4;
-                        }
-                    } while (true);
-
-
-                    }
-                    break;
-
-            }
             state.type = _type;
             state.channel = _channel;
         }
@@ -941,10 +946,10 @@ public class AssemblerLexer extends Lexer {
     // $ANTLR end "WS"
 
     public void mTokens() throws RecognitionException {
-        // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | INT | TYPE_STRUCT | ID | NOVA_LINHA | WS )
-        int alt6=32;
-        alt6 = dfa6.predict(input);
-        switch (alt6) {
+        // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | INT | TYPE_STRUCT | ID | NOVA_LINHA | WS )
+        int alt5=33;
+        alt5 = dfa5.predict(input);
+        switch (alt5) {
             case 1 :
                 // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:10: T__9
                 {
@@ -1162,39 +1167,47 @@ public class AssemblerLexer extends Lexer {
                 }
                 break;
             case 28 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:171: INT
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:171: T__36
+                {
+                mT__36(); 
+
+
+                }
+                break;
+            case 29 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:177: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 29 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:175: TYPE_STRUCT
+            case 30 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:181: TYPE_STRUCT
                 {
                 mTYPE_STRUCT(); 
 
 
                 }
                 break;
-            case 30 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:187: ID
+            case 31 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:193: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 31 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:190: NOVA_LINHA
+            case 32 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:196: NOVA_LINHA
                 {
                 mNOVA_LINHA(); 
 
 
                 }
                 break;
-            case 32 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:201: WS
+            case 33 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:207: WS
                 {
                 mWS(); 
 
@@ -1207,49 +1220,50 @@ public class AssemblerLexer extends Lexer {
     }
 
 
-    protected DFA6 dfa6 = new DFA6(this);
-    static final String DFA6_eotS =
-        "\2\uffff\14\21\1\uffff\2\21\3\uffff\13\21\2\uffff\2\21\1\60\2\21"+
-        "\1\63\1\21\1\65\3\21\1\71\3\21\1\uffff\2\21\1\uffff\1\77\1\uffff"+
-        "\1\100\1\101\1\21\1\uffff\5\21\4\uffff\1\21\2\114\2\21\24\uffff"+
-        "\1\141\7\uffff";
-    static final String DFA6_eofS =
-        "\144\uffff";
-    static final String DFA6_minS =
+    protected DFA5 dfa5 = new DFA5(this);
+    static final String DFA5_eotS =
+        "\2\uffff\15\22\1\uffff\2\22\3\uffff\20\22\1\65\2\22\1\70\1\22\1"+
+        "\72\3\22\1\76\6\22\1\uffff\2\22\1\uffff\1\107\1\uffff\1\110\1\111"+
+        "\1\22\1\uffff\1\22\1\114\1\115\1\116\4\22\4\uffff\1\22\3\uffff\2"+
+        "\127\2\22\24\uffff\1\154\7\uffff";
+    static final String DFA5_eofS =
+        "\157\uffff";
+    static final String DFA5_minS =
         "\1\11\1\uffff\1\104\1\122\1\105\1\116\1\115\2\125\1\105\1\125\1"+
-        "\122\1\141\1\162\1\uffff\1\111\1\105\3\uffff\1\104\1\105\1\114\1"+
-        "\126\1\111\1\120\2\114\1\101\1\102\1\111\2\uffff\1\123\1\124\1\56"+
-        "\1\101\1\105\1\56\1\124\1\56\1\124\1\114\1\104\1\56\2\124\1\117"+
-        "\1\uffff\2\124\1\uffff\1\56\1\uffff\2\56\1\137\1\uffff\1\105\1\101"+
-        "\1\122\2\105\3\uffff\1\111\1\137\2\56\2\137\1\116\1\105\1\uffff"+
-        "\1\111\1\uffff\2\111\1\106\2\uffff\1\116\1\105\10\uffff\1\103\1"+
-        "\106\6\uffff";
-    static final String DFA6_maxS =
+        "\122\1\141\1\165\1\162\1\uffff\1\111\1\105\3\uffff\1\104\1\105\1"+
+        "\114\1\126\1\111\1\120\2\114\1\101\1\102\1\111\1\144\1\154\1\157"+
+        "\1\123\1\124\1\56\1\101\1\105\1\56\1\124\1\56\1\124\1\114\1\104"+
+        "\1\56\1\124\1\157\1\154\1\170\1\124\1\117\1\uffff\2\124\1\uffff"+
+        "\1\56\1\uffff\2\56\1\137\1\uffff\1\105\3\56\1\101\1\122\2\105\3"+
+        "\uffff\1\111\1\137\3\uffff\2\56\2\137\1\116\1\105\1\uffff\1\111"+
+        "\1\uffff\2\111\1\106\2\uffff\1\116\1\105\10\uffff\1\103\1\106\6"+
+        "\uffff";
+    static final String DFA5_maxS =
         "\1\172\1\uffff\1\104\1\122\1\111\1\116\1\115\2\125\1\105\1\125\1"+
-        "\122\1\141\1\162\1\uffff\1\111\1\105\3\uffff\1\104\1\105\1\114\1"+
-        "\126\1\111\1\120\2\114\1\101\1\102\1\111\2\uffff\1\123\1\124\1\172"+
-        "\1\101\1\105\1\172\1\124\1\172\1\124\1\114\1\104\1\172\2\124\1\117"+
-        "\1\uffff\2\124\1\uffff\1\172\1\uffff\2\172\1\137\1\uffff\1\105\1"+
-        "\101\1\122\2\105\3\uffff\1\126\1\137\2\172\2\137\2\116\1\uffff\1"+
-        "\126\1\uffff\2\122\1\124\2\uffff\2\116\10\uffff\1\103\1\124\6\uffff";
-    static final String DFA6_acceptS =
-        "\1\uffff\1\1\14\uffff\1\34\2\uffff\1\36\1\37\1\40\13\uffff\1\32"+
-        "\1\33\17\uffff\1\2\2\uffff\1\11\1\uffff\1\13\3\uffff\1\24\5\uffff"+
-        "\1\12\1\14\1\15\10\uffff\1\23\1\uffff\1\35\3\uffff\1\21\1\22\2\uffff"+
-        "\1\31\1\3\1\4\1\5\1\6\1\7\1\10\1\16\2\uffff\1\27\1\30\1\20\1\17"+
-        "\1\25\1\26";
-    static final String DFA6_specialS =
-        "\144\uffff}>";
-    static final String[] DFA6_transitionS = {
-            "\2\23\2\uffff\1\23\22\uffff\1\23\14\uffff\1\16\2\uffff\12\16"+
-            "\1\1\1\22\5\uffff\1\2\1\21\1\3\1\4\4\21\1\5\1\6\1\21\1\17\1"+
-            "\7\1\10\3\21\1\11\1\12\2\21\1\20\1\13\3\21\6\uffff\3\21\1\14"+
-            "\13\21\1\15\12\21",
+        "\122\1\141\1\165\1\162\1\uffff\1\111\1\105\3\uffff\1\104\1\105\1"+
+        "\114\1\126\1\111\1\120\2\114\1\101\1\102\1\111\1\144\1\154\1\157"+
+        "\1\123\1\124\1\172\1\101\1\105\1\172\1\124\1\172\1\124\1\114\1\104"+
+        "\1\172\1\124\1\157\1\154\1\170\1\124\1\117\1\uffff\2\124\1\uffff"+
+        "\1\172\1\uffff\2\172\1\137\1\uffff\1\105\3\172\1\101\1\122\2\105"+
+        "\3\uffff\1\126\1\137\3\uffff\2\172\2\137\2\116\1\uffff\1\126\1\uffff"+
+        "\2\122\1\124\2\uffff\2\116\10\uffff\1\103\1\124\6\uffff";
+    static final String DFA5_acceptS =
+        "\1\uffff\1\1\15\uffff\1\35\2\uffff\1\37\1\40\1\41\40\uffff\1\2\2"+
+        "\uffff\1\11\1\uffff\1\13\3\uffff\1\24\10\uffff\1\12\1\14\1\15\2"+
+        "\uffff\1\32\1\33\1\34\6\uffff\1\23\1\uffff\1\36\3\uffff\1\21\1\22"+
+        "\2\uffff\1\31\1\3\1\4\1\5\1\6\1\7\1\10\1\16\2\uffff\1\27\1\30\1"+
+        "\20\1\17\1\25\1\26";
+    static final String DFA5_specialS =
+        "\157\uffff}>";
+    static final String[] DFA5_transitionS = {
+            "\2\24\2\uffff\1\24\22\uffff\1\24\14\uffff\1\17\2\uffff\12\17"+
+            "\1\1\1\23\5\uffff\1\2\1\22\1\3\1\4\4\22\1\5\1\6\1\22\1\20\1"+
+            "\7\1\10\3\22\1\11\1\12\2\22\1\21\1\13\3\22\6\uffff\3\22\1\14"+
+            "\11\22\1\15\1\22\1\16\12\22",
             "",
-            "\1\24",
             "\1\25",
-            "\1\26\3\uffff\1\27",
-            "\1\30",
+            "\1\26",
+            "\1\27\3\uffff\1\30",
             "\1\31",
             "\1\32",
             "\1\33",
@@ -1258,14 +1272,14 @@ public class AssemblerLexer extends Lexer {
             "\1\36",
             "\1\37",
             "\1\40",
-            "",
             "\1\41",
             "\1\42",
             "",
-            "",
-            "",
             "\1\43",
             "\1\44",
+            "",
+            "",
+            "",
             "\1\45",
             "\1\46",
             "\1\47",
@@ -1275,69 +1289,81 @@ public class AssemblerLexer extends Lexer {
             "\1\53",
             "\1\54",
             "\1\55",
-            "",
-            "",
             "\1\56",
             "\1\57",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
+            "\1\60",
             "\1\61",
             "\1\62",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
+            "\1\63",
             "\1\64",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
             "\1\66",
             "\1\67",
-            "\1\70",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
-            "\1\72",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\71",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
             "\1\73",
             "\1\74",
-            "",
             "\1\75",
-            "\1\76",
-            "",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
-            "",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\77",
+            "\1\100",
+            "\1\101",
             "\1\102",
-            "",
             "\1\103",
             "\1\104",
+            "",
             "\1\105",
             "\1\106",
-            "\1\107",
             "",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
             "",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\112",
             "",
-            "\1\110\10\uffff\1\111\3\uffff\1\112",
             "\1\113",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
-            "\1\21\1\uffff\12\21\7\uffff\32\21\6\uffff\32\21",
-            "\1\115",
-            "\1\116",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
             "\1\117",
-            "\1\120\10\uffff\1\121",
-            "",
-            "\1\122\10\uffff\1\123\3\uffff\1\124",
-            "",
-            "\1\125\4\uffff\1\126\3\uffff\1\127",
-            "\1\130\4\uffff\1\131\3\uffff\1\132",
-            "\1\133\15\uffff\1\134",
-            "",
-            "",
-            "\1\135",
-            "\1\136\10\uffff\1\137",
+            "\1\120",
+            "\1\121",
+            "\1\122",
             "",
             "",
             "",
+            "\1\123\10\uffff\1\124\3\uffff\1\125",
+            "\1\126",
+            "",
+            "",
+            "",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\22\1\uffff\12\22\7\uffff\32\22\6\uffff\32\22",
+            "\1\130",
+            "\1\131",
+            "\1\132",
+            "\1\133\10\uffff\1\134",
+            "",
+            "\1\135\10\uffff\1\136\3\uffff\1\137",
+            "",
+            "\1\140\4\uffff\1\141\3\uffff\1\142",
+            "\1\143\4\uffff\1\144\3\uffff\1\145",
+            "\1\146\15\uffff\1\147",
+            "",
+            "",
+            "\1\150",
+            "\1\151\10\uffff\1\152",
             "",
             "",
             "",
             "",
             "",
-            "\1\140",
-            "\1\142\15\uffff\1\143",
+            "",
+            "",
+            "",
+            "\1\153",
+            "\1\155\15\uffff\1\156",
             "",
             "",
             "",
@@ -1346,37 +1372,37 @@ public class AssemblerLexer extends Lexer {
             ""
     };
 
-    static final short[] DFA6_eot = DFA.unpackEncodedString(DFA6_eotS);
-    static final short[] DFA6_eof = DFA.unpackEncodedString(DFA6_eofS);
-    static final char[] DFA6_min = DFA.unpackEncodedStringToUnsignedChars(DFA6_minS);
-    static final char[] DFA6_max = DFA.unpackEncodedStringToUnsignedChars(DFA6_maxS);
-    static final short[] DFA6_accept = DFA.unpackEncodedString(DFA6_acceptS);
-    static final short[] DFA6_special = DFA.unpackEncodedString(DFA6_specialS);
-    static final short[][] DFA6_transition;
+    static final short[] DFA5_eot = DFA.unpackEncodedString(DFA5_eotS);
+    static final short[] DFA5_eof = DFA.unpackEncodedString(DFA5_eofS);
+    static final char[] DFA5_min = DFA.unpackEncodedStringToUnsignedChars(DFA5_minS);
+    static final char[] DFA5_max = DFA.unpackEncodedStringToUnsignedChars(DFA5_maxS);
+    static final short[] DFA5_accept = DFA.unpackEncodedString(DFA5_acceptS);
+    static final short[] DFA5_special = DFA.unpackEncodedString(DFA5_specialS);
+    static final short[][] DFA5_transition;
 
     static {
-        int numStates = DFA6_transitionS.length;
-        DFA6_transition = new short[numStates][];
+        int numStates = DFA5_transitionS.length;
+        DFA5_transition = new short[numStates][];
         for (int i=0; i<numStates; i++) {
-            DFA6_transition[i] = DFA.unpackEncodedString(DFA6_transitionS[i]);
+            DFA5_transition[i] = DFA.unpackEncodedString(DFA5_transitionS[i]);
         }
     }
 
-    class DFA6 extends DFA {
+    class DFA5 extends DFA {
 
-        public DFA6(BaseRecognizer recognizer) {
+        public DFA5(BaseRecognizer recognizer) {
             this.recognizer = recognizer;
-            this.decisionNumber = 6;
-            this.eot = DFA6_eot;
-            this.eof = DFA6_eof;
-            this.min = DFA6_min;
-            this.max = DFA6_max;
-            this.accept = DFA6_accept;
-            this.special = DFA6_special;
-            this.transition = DFA6_transition;
+            this.decisionNumber = 5;
+            this.eot = DFA5_eot;
+            this.eof = DFA5_eof;
+            this.min = DFA5_min;
+            this.max = DFA5_max;
+            this.accept = DFA5_accept;
+            this.special = DFA5_special;
+            this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | INT | TYPE_STRUCT | ID | NOVA_LINHA | WS );";
+            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | INT | TYPE_STRUCT | ID | NOVA_LINHA | WS );";
         }
     }
  
