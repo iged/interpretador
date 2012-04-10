@@ -29,16 +29,16 @@ criar : 'CREATE_INT' ID
 ler : 'READ_INT' ID
     | 'READ_INTC' INT
     | 'READ_VET' ID
-    | 'READ_RN' ID ('dado' | 'prox')
+    | 'READ_RN' ID NAME_REF
     | 'READ_INFO' ID
     | 'READ_REF' ID
     ;
 
 escrever : 'WRITE_INT' ID
          | 'WRITE_VET' ID
-         | 'WRITE_RN' ID ('dado' | 'prox') ('null' | 'NULL')?
+         | 'WRITE_RN' ID NAME_REF NULL?
          | 'WRITE_INFO' ID
-         | 'WRITE_REF' ID ('null' | 'NULL')?
+         | 'WRITE_REF' ID NULL?
          ;
 
 deletar : 'DELETE_INT' ID
@@ -53,6 +53,10 @@ TYPE_STRUCT : 'LISTA'
             ;
 
 ID:  ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
+
+NAME_REF: ('dado' | 'prox');
+
+NULL: ('null' | 'NULL'); 
 
 //LETRA: ('a'..'z' | 'A'..'Z');
 
