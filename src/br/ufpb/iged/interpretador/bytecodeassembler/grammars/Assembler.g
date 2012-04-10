@@ -36,9 +36,9 @@ ler : 'READ_INT' ID
 
 escrever : 'WRITE_INT' ID
          | 'WRITE_VET' ID
-         | 'WRITE_RN' ID ('dado' | 'prox') 'NULL'?
+         | 'WRITE_RN' ID ('dado' | 'prox') ('null' | 'NULL')?
          | 'WRITE_INFO' ID
-         | 'WRITE_REF' ID 'NULL'?
+         | 'WRITE_REF' ID ('null' | 'NULL')?
          ;
 
 deletar : 'DELETE_INT' ID
