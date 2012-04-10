@@ -15,7 +15,7 @@
  
 </project>-->
 
-<project name="Interpretador" default="clean" basedir=".">
+<project name="Interpretador" default="gerar" basedir=".">
  
 	<property name = "src.dir" value = 
 		"src/br/ufpb/iged/interpretador/bytecodeassembler/grammars"/>
