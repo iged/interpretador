@@ -29,14 +29,14 @@ criar : 'CREATE_INT' ID
 ler : 'READ_INT' ID
     | 'READ_INTC' INT
     | 'READ_VET' ID
-    | 'READ_RN' ID NAME_REF
+    | 'READ_RN' ID NOME_REF
     | 'READ_INFO' ID
     | 'READ_REF' ID
     ;
 
 escrever : 'WRITE_INT' ID
          | 'WRITE_VET' ID
-         | 'WRITE_RN' ID NAME_REF NULL?
+         | 'WRITE_RN' ID NOME_REF NULL?
          | 'WRITE_INFO' ID
          | 'WRITE_REF' ID NULL?
          ;
@@ -46,7 +46,7 @@ deletar : 'DELETE_INT' ID
         | 'DELETE_REF' ID
         ;
 
-NAME_REF: ('dado' | 'prox');
+NOME_REF: ('dado' | 'prox');
 
 NULL: ('null' | 'NULL'); 
 
