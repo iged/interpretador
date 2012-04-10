@@ -27,37 +27,48 @@ public class Definicao {
 	public static final int SUB = 21;
 	public static final int MULT = 22;
 	public static final int DIV = 23;
+	public static final int LABEL = 24;
 	
 	public static final int TYPE_STRUCT = AssemblerParser.TYPE_STRUCT;
 	public static final int ID = AssemblerParser.ID;
 	public static final int INT = AssemblerParser.INT;
+	public static final int NOME_REF = AssemblerParser.NOME_REF;
+	public static final int NULL = AssemblerParser.NULL;
 	
 	
 	public static class Instrucao {
 		
 		String nome;
 		
-		int[] tipo = new int[2];
+		int[] tipo = new int[3];
 		
 		int n = 0;
 		
 		public Instrucao (String nome) {
 			
-			this (nome, 0, 0);
+			this (nome, 0, 0, 0);
 			
 		}
 		
 		public Instrucao (String nome, int a) {
 			
-			this(nome, a, 0);
+			this(nome, a, 0, 0);
 			
 		}
 		
+		
 		public Instrucao(String nome, int a, int b) {
+			
+			this(nome, a, b, 0);
+			
+		}
+		
+		public Instrucao (String nome, int a, int b, int c) {
 			
 			this.nome = nome;
 			tipo[0] = a;
 			tipo[1] = b;
+			tipo[2] = c;
 			
 		}
 		
@@ -72,7 +83,27 @@ public class Definicao {
 		new Instrucao("CREATE_REF", ID),
 		new Instrucao("READ_INT", ID),
 		new Instrucao("READ_INTC", INT),
-		new Instrucao("READ_VET", ID)
+		new Instrucao("READ_VET", ID),
+		new Instrucao("READ_RN", ID, NOME_REF),
+		new Instrucao("READ_INFO", ID),
+		new Instrucao("READ_REF", ID),
+		new Instrucao("WRITE_INT", ID),
+		new Instrucao("WRITE_VET", ID),
+		new Instrucao("WRITE_RN", ID, NOME_REF),
+        new Instrucao("WRITE_RN", ID, NOME_REF, NULL),
+        new Instrucao("WRITE_INFO", ID),
+        new Instrucao("WRITE_REF", ID),
+        new Instrucao("WRITE_REF", ID, NULL),
+        new Instrucao("DELETE_INT", ID),
+        new Instrucao("DELETE_NODE", ID),
+        new Instrucao("DELETE_REF", ID),
+        new Instrucao("ADD"),
+        new Instrucao("SUB"),
+        new Instrucao("MULT"),
+        new Instrucao("DIV"),
+        new Instrucao("JMP"),
+		new Instrucao("LABEL")
+
 	};
  
 
