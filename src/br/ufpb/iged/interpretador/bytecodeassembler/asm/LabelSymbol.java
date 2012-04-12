@@ -63,7 +63,7 @@ public class LabelSymbol {
 		    System.out.println("updating operand at addr "+
                     addr+" to be "+getAddress());
 		    */
-            BytecodeAssembler.writeInt(code, addrToPatch, address);
+            BytecodeAssembler.escreverInteiro(code, addrToPatch, address);
         }
     }
 
