@@ -6,7 +6,10 @@ grammar Assembler;
   protected void createInt(Token opcode, Token id);
   protected void createNode(Token opcode, Token typeStruct);
   protected void createRef(Token opcode, Token id);
-
+  protected void readIntC(Token opcode, Token intc);
+  protected void readRn(Token opcode, Token id, Token nomeRef);
+  protected void escreverLeituraReferencia(Token opcode, Token id);
+  
 }
 
 programa : comando*
@@ -35,12 +38,12 @@ criar : a = 'CREATE_INT' b = ID {createInt($a, $b);}
       | a = 'CREATE_REF' b = ID {createRef($a, $b);}
       ;
 
-ler : 'READ_INT' ID
-    | 'READ_INTC' INT
-    | 'READ_VET' ID
-    | 'READ_RN' ID NOME_REF
-    | 'READ_INFO' ID
-    | 'READ_REF' ID
+ler : a = 'READ_INT' b = ID {escreverLeituraReferencia($a, $b);}
+    | a = 'READ_INTC' INT {readIntC($a, $INT);}
+    | a = 'READ_VET' b = ID {escreverLeituraReferencia($a, $b);}
+    | a = 'READ_RN' b = ID NOME_REF {readRn($a, $b, $NOME_REF);}
+    | a = 'READ_INFO' b = ID {escreverLeituraReferencia($a, $b);}
+    | a = 'READ_REF' b = ID {escreverLeituraReferencia($a, $b);}
     ;
 
 escrever : 'WRITE_INT' ID
