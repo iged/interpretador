@@ -1,5 +1,14 @@
 grammar Assembler;
 
+@members {
+
+  protected void init(Token opcode, Token typeStruct, Token id, Token size);
+  protected void createInt(Token opcode, Token id);
+  protected void createNode(Token opcode, Token typeStruct);
+  protected void createRef(Token opcode, Token id);
+
+}
+
 programa : comando*
          ;
 
@@ -19,11 +28,11 @@ manipulacao: (iniciar | criar | ler | escrever | deletar);
 
 desvio : 'JMP' ID;
   
-iniciar: 'INIT' TYPE_STRUCT ID INT?;  
+iniciar: a = 'INIT' TYPE_STRUCT b = ID INT? {init($a, $TYPE_STRUCT, $b, $INT);};  
       
-criar : 'CREATE_INT' ID
-      | 'CREATE_NODE' TYPE_STRUCT
-      | 'CREATE_REF' ID
+criar : a = 'CREATE_INT' b = ID {createInt($a, $b);}
+      | a = 'CREATE_NODE' TYPE_STRUCT {createNode($a, $TYPE_STRUCT);}
+      | a = 'CREATE_REF' b = ID {createRef($a, $b);}
       ;
 
 ler : 'READ_INT' ID
