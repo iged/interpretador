@@ -1,4 +1,4 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-12 01:14:53
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-12 11:17:41
 
 package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
@@ -70,18 +70,21 @@ public abstract class AssemblerParser extends Parser {
     protected abstract void createInt(Token opcode, Token id);
     protected abstract void createNode(Token opcode, Token typeStruct);
     protected abstract void createRef(Token opcode, Token id);
-
+    protected abstract void readIntC(Token opcode, Token intc);
+    protected abstract void readRn(Token opcode, Token id, Token nomeRef);
+    protected abstract void escreverLeituraReferencia(Token opcode, Token id);
+      
 
 
 
     // $ANTLR start "programa"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:1: programa : ( comando )* ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:1: programa : ( comando )* ;
     public final void programa() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:10: ( ( comando )* )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:12: ( comando )*
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:10: ( ( comando )* )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:12: ( comando )*
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:12: ( comando )*
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:12: ( comando )*
             loop1:
             do {
                 int alt1=2;
@@ -94,7 +97,7 @@ public abstract class AssemblerParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:12: comando
+            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:12: comando
             	    {
             	    pushFollow(FOLLOW_comando_in_programa16);
             	    comando();
@@ -129,13 +132,13 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "comando"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:1: comando : ( label instrucao | instrucao ) ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:1: comando : ( label instrucao | instrucao ) ;
     public final void comando() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:9: ( ( label instrucao | instrucao ) )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:11: ( label instrucao | instrucao )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:9: ( ( label instrucao | instrucao ) )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:11: ( label instrucao | instrucao )
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:11: ( label instrucao | instrucao )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:11: ( label instrucao | instrucao )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -154,7 +157,7 @@ public abstract class AssemblerParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:12: label instrucao
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:12: label instrucao
                     {
                     pushFollow(FOLLOW_label_in_comando36);
                     label();
@@ -171,7 +174,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:30: instrucao
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:30: instrucao
                     {
                     pushFollow(FOLLOW_instrucao_in_comando42);
                     instrucao();
@@ -203,11 +206,11 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "label"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:1: label : ID ':' ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:1: label : ID ':' ;
     public final void label() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:7: ( ID ':' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:9: ID ':'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:7: ( ID ':' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:9: ID ':'
             {
             match(input,ID,FOLLOW_ID_in_label60); 
 
@@ -231,13 +234,13 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "instrucao"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:1: instrucao : ( aritmetica | manipulacao | desvio )? NOVA_LINHA ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:1: instrucao : ( aritmetica | manipulacao | desvio )? NOVA_LINHA ;
     public final void instrucao() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:10: ( ( aritmetica | manipulacao | desvio )? NOVA_LINHA )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:12: ( aritmetica | manipulacao | desvio )? NOVA_LINHA
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:10: ( ( aritmetica | manipulacao | desvio )? NOVA_LINHA )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:12: ( aritmetica | manipulacao | desvio )? NOVA_LINHA
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:12: ( aritmetica | manipulacao | desvio )?
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:12: ( aritmetica | manipulacao | desvio )?
             int alt3=4;
             switch ( input.LA(1) ) {
                 case 12:
@@ -279,7 +282,7 @@ public abstract class AssemblerParser extends Parser {
 
             switch (alt3) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:13: aritmetica
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:13: aritmetica
                     {
                     pushFollow(FOLLOW_aritmetica_in_instrucao70);
                     aritmetica();
@@ -290,7 +293,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:26: manipulacao
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:26: manipulacao
                     {
                     pushFollow(FOLLOW_manipulacao_in_instrucao74);
                     manipulacao();
@@ -301,7 +304,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:40: desvio
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:40: desvio
                     {
                     pushFollow(FOLLOW_desvio_in_instrucao78);
                     desvio();
@@ -335,10 +338,10 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "aritmetica"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:1: aritmetica : ( 'ADD' | 'SUB' | 'MULT' | 'DIV' );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:1: aritmetica : ( 'ADD' | 'SUB' | 'MULT' | 'DIV' );
     public final void aritmetica() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:12: ( 'ADD' | 'SUB' | 'MULT' | 'DIV' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:12: ( 'ADD' | 'SUB' | 'MULT' | 'DIV' )
             // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
             {
             if ( input.LA(1)==12||input.LA(1)==19||input.LA(1)==22||input.LA(1)==29 ) {
@@ -369,13 +372,13 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "manipulacao"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:1: manipulacao : ( iniciar | criar | ler | escrever | deletar ) ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:1: manipulacao : ( iniciar | criar | ler | escrever | deletar ) ;
     public final void manipulacao() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:12: ( ( iniciar | criar | ler | escrever | deletar ) )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:14: ( iniciar | criar | ler | escrever | deletar )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:12: ( ( iniciar | criar | ler | escrever | deletar ) )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:14: ( iniciar | criar | ler | escrever | deletar )
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:14: ( iniciar | criar | ler | escrever | deletar )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:14: ( iniciar | criar | ler | escrever | deletar )
             int alt4=5;
             switch ( input.LA(1) ) {
             case 20:
@@ -426,7 +429,7 @@ public abstract class AssemblerParser extends Parser {
 
             switch (alt4) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:15: iniciar
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:15: iniciar
                     {
                     pushFollow(FOLLOW_iniciar_in_manipulacao161);
                     iniciar();
@@ -437,7 +440,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:25: criar
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:25: criar
                     {
                     pushFollow(FOLLOW_criar_in_manipulacao165);
                     criar();
@@ -448,7 +451,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:33: ler
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:33: ler
                     {
                     pushFollow(FOLLOW_ler_in_manipulacao169);
                     ler();
@@ -459,7 +462,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:39: escrever
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:39: escrever
                     {
                     pushFollow(FOLLOW_escrever_in_manipulacao173);
                     escrever();
@@ -470,7 +473,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:50: deletar
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:50: deletar
                     {
                     pushFollow(FOLLOW_deletar_in_manipulacao177);
                     deletar();
@@ -502,11 +505,11 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "desvio"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:1: desvio : 'JMP' ID ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:1: desvio : 'JMP' ID ;
     public final void desvio() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:8: ( 'JMP' ID )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:10: 'JMP' ID
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:8: ( 'JMP' ID )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:10: 'JMP' ID
             {
             match(input,21,FOLLOW_21_in_desvio186); 
 
@@ -530,7 +533,7 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "iniciar"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:1: iniciar : a= 'INIT' TYPE_STRUCT b= ID ( INT )? ;
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:1: iniciar : a= 'INIT' TYPE_STRUCT b= ID ( INT )? ;
     public final void iniciar() throws RecognitionException {
         Token a=null;
         Token b=null;
@@ -538,8 +541,8 @@ public abstract class AssemblerParser extends Parser {
         Token INT2=null;
 
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:8: (a= 'INIT' TYPE_STRUCT b= ID ( INT )? )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:10: a= 'INIT' TYPE_STRUCT b= ID ( INT )?
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:8: (a= 'INIT' TYPE_STRUCT b= ID ( INT )? )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:10: a= 'INIT' TYPE_STRUCT b= ID ( INT )?
             {
             a=(Token)match(input,20,FOLLOW_20_in_iniciar201); 
 
@@ -547,7 +550,7 @@ public abstract class AssemblerParser extends Parser {
 
             b=(Token)match(input,ID,FOLLOW_ID_in_iniciar209); 
 
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:40: ( INT )?
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:40: ( INT )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -556,7 +559,7 @@ public abstract class AssemblerParser extends Parser {
             }
             switch (alt5) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:40: INT
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:40: INT
                     {
                     INT2=(Token)match(input,INT,FOLLOW_INT_in_iniciar211); 
 
@@ -586,14 +589,14 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "criar"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:1: criar : (a= 'CREATE_INT' b= ID |a= 'CREATE_NODE' TYPE_STRUCT |a= 'CREATE_REF' b= ID );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:1: criar : (a= 'CREATE_INT' b= ID |a= 'CREATE_NODE' TYPE_STRUCT |a= 'CREATE_REF' b= ID );
     public final void criar() throws RecognitionException {
         Token a=null;
         Token b=null;
         Token TYPE_STRUCT3=null;
 
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:7: (a= 'CREATE_INT' b= ID |a= 'CREATE_NODE' TYPE_STRUCT |a= 'CREATE_REF' b= ID )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:7: (a= 'CREATE_INT' b= ID |a= 'CREATE_NODE' TYPE_STRUCT |a= 'CREATE_REF' b= ID )
             int alt6=3;
             switch ( input.LA(1) ) {
             case 13:
@@ -621,7 +624,7 @@ public abstract class AssemblerParser extends Parser {
 
             switch (alt6) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:9: a= 'CREATE_INT' b= ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:9: a= 'CREATE_INT' b= ID
                     {
                     a=(Token)match(input,13,FOLLOW_13_in_criar234); 
 
@@ -632,7 +635,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:9: a= 'CREATE_NODE' TYPE_STRUCT
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:9: a= 'CREATE_NODE' TYPE_STRUCT
                     {
                     a=(Token)match(input,14,FOLLOW_14_in_criar256); 
 
@@ -643,7 +646,7 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:35:9: a= 'CREATE_REF' b= ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:9: a= 'CREATE_REF' b= ID
                     {
                     a=(Token)match(input,15,FOLLOW_15_in_criar274); 
 
@@ -671,10 +674,15 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "ler"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:1: ler : ( 'READ_INT' ID | 'READ_INTC' INT | 'READ_VET' ID | 'READ_RN' ID NOME_REF | 'READ_INFO' ID | 'READ_REF' ID );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:1: ler : (a= 'READ_INT' b= ID |a= 'READ_INTC' INT |a= 'READ_VET' b= ID |a= 'READ_RN' b= ID NOME_REF |a= 'READ_INFO' b= ID |a= 'READ_REF' b= ID );
     public final void ler() throws RecognitionException {
+        Token a=null;
+        Token b=null;
+        Token INT4=null;
+        Token NOME_REF5=null;
+
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:5: ( 'READ_INT' ID | 'READ_INTC' INT | 'READ_VET' ID | 'READ_RN' ID NOME_REF | 'READ_INFO' ID | 'READ_REF' ID )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:5: (a= 'READ_INT' b= ID |a= 'READ_INTC' INT |a= 'READ_VET' b= ID |a= 'READ_RN' b= ID NOME_REF |a= 'READ_INFO' b= ID |a= 'READ_REF' b= ID )
             int alt7=6;
             switch ( input.LA(1) ) {
             case 24:
@@ -717,58 +725,70 @@ public abstract class AssemblerParser extends Parser {
 
             switch (alt7) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:7: 'READ_INT' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:7: a= 'READ_INT' b= ID
                     {
-                    match(input,24,FOLLOW_24_in_ler297); 
+                    a=(Token)match(input,24,FOLLOW_24_in_ler301); 
 
-                    match(input,ID,FOLLOW_ID_in_ler299); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_ler307); 
+
+                    escreverLeituraReferencia(a, b);
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:7: 'READ_INTC' INT
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:42:7: a= 'READ_INTC' INT
                     {
-                    match(input,25,FOLLOW_25_in_ler307); 
+                    a=(Token)match(input,25,FOLLOW_25_in_ler321); 
 
-                    match(input,INT,FOLLOW_INT_in_ler309); 
+                    INT4=(Token)match(input,INT,FOLLOW_INT_in_ler323); 
+
+                    readIntC(a, INT4);
 
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:40:7: 'READ_VET' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:43:7: a= 'READ_VET' b= ID
                     {
-                    match(input,28,FOLLOW_28_in_ler317); 
+                    a=(Token)match(input,28,FOLLOW_28_in_ler337); 
 
-                    match(input,ID,FOLLOW_ID_in_ler319); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_ler343); 
+
+                    escreverLeituraReferencia(a, b);
 
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:7: 'READ_RN' ID NOME_REF
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:7: a= 'READ_RN' b= ID NOME_REF
                     {
-                    match(input,27,FOLLOW_27_in_ler327); 
+                    a=(Token)match(input,27,FOLLOW_27_in_ler357); 
 
-                    match(input,ID,FOLLOW_ID_in_ler329); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_ler363); 
 
-                    match(input,NOME_REF,FOLLOW_NOME_REF_in_ler331); 
+                    NOME_REF5=(Token)match(input,NOME_REF,FOLLOW_NOME_REF_in_ler365); 
+
+                    readRn(a, b, NOME_REF5);
 
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:42:7: 'READ_INFO' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:45:7: a= 'READ_INFO' b= ID
                     {
-                    match(input,23,FOLLOW_23_in_ler339); 
+                    a=(Token)match(input,23,FOLLOW_23_in_ler379); 
 
-                    match(input,ID,FOLLOW_ID_in_ler341); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_ler385); 
+
+                    escreverLeituraReferencia(a, b);
 
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:43:7: 'READ_REF' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:7: a= 'READ_REF' b= ID
                     {
-                    match(input,26,FOLLOW_26_in_ler349); 
+                    a=(Token)match(input,26,FOLLOW_26_in_ler399); 
 
-                    match(input,ID,FOLLOW_ID_in_ler351); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_ler405); 
+
+                    escreverLeituraReferencia(a, b);
 
                     }
                     break;
@@ -790,10 +810,10 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "escrever"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:1: escrever : ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID NOME_REF ( NULL )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( NULL )? );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:49:1: escrever : ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID NOME_REF ( NULL )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( NULL )? );
     public final void escrever() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:10: ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID NOME_REF ( NULL )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( NULL )? )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:49:10: ( 'WRITE_INT' ID | 'WRITE_VET' ID | 'WRITE_RN' ID NOME_REF ( NULL )? | 'WRITE_INFO' ID | 'WRITE_REF' ID ( NULL )? )
             int alt10=5;
             switch ( input.LA(1) ) {
             case 31:
@@ -831,33 +851,33 @@ public abstract class AssemblerParser extends Parser {
 
             switch (alt10) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:12: 'WRITE_INT' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:49:12: 'WRITE_INT' ID
                     {
-                    match(input,31,FOLLOW_31_in_escrever364); 
+                    match(input,31,FOLLOW_31_in_escrever420); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever366); 
+                    match(input,ID,FOLLOW_ID_in_escrever422); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:47:12: 'WRITE_VET' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:50:12: 'WRITE_VET' ID
                     {
-                    match(input,34,FOLLOW_34_in_escrever379); 
+                    match(input,34,FOLLOW_34_in_escrever435); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever381); 
+                    match(input,ID,FOLLOW_ID_in_escrever437); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:48:12: 'WRITE_RN' ID NOME_REF ( NULL )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:51:12: 'WRITE_RN' ID NOME_REF ( NULL )?
                     {
-                    match(input,33,FOLLOW_33_in_escrever394); 
+                    match(input,33,FOLLOW_33_in_escrever450); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever396); 
+                    match(input,ID,FOLLOW_ID_in_escrever452); 
 
-                    match(input,NOME_REF,FOLLOW_NOME_REF_in_escrever398); 
+                    match(input,NOME_REF,FOLLOW_NOME_REF_in_escrever454); 
 
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:48:35: ( NULL )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:51:35: ( NULL )?
                     int alt8=2;
                     int LA8_0 = input.LA(1);
 
@@ -866,9 +886,9 @@ public abstract class AssemblerParser extends Parser {
                     }
                     switch (alt8) {
                         case 1 :
-                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:48:35: NULL
+                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:51:35: NULL
                             {
-                            match(input,NULL,FOLLOW_NULL_in_escrever400); 
+                            match(input,NULL,FOLLOW_NULL_in_escrever456); 
 
                             }
                             break;
@@ -879,22 +899,22 @@ public abstract class AssemblerParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:49:12: 'WRITE_INFO' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:52:12: 'WRITE_INFO' ID
                     {
-                    match(input,30,FOLLOW_30_in_escrever414); 
+                    match(input,30,FOLLOW_30_in_escrever470); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever416); 
+                    match(input,ID,FOLLOW_ID_in_escrever472); 
 
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:50:12: 'WRITE_REF' ID ( NULL )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:12: 'WRITE_REF' ID ( NULL )?
                     {
-                    match(input,32,FOLLOW_32_in_escrever429); 
+                    match(input,32,FOLLOW_32_in_escrever485); 
 
-                    match(input,ID,FOLLOW_ID_in_escrever431); 
+                    match(input,ID,FOLLOW_ID_in_escrever487); 
 
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:50:27: ( NULL )?
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:27: ( NULL )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -903,9 +923,9 @@ public abstract class AssemblerParser extends Parser {
                     }
                     switch (alt9) {
                         case 1 :
-                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:50:27: NULL
+                            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:27: NULL
                             {
-                            match(input,NULL,FOLLOW_NULL_in_escrever433); 
+                            match(input,NULL,FOLLOW_NULL_in_escrever489); 
 
                             }
                             break;
@@ -933,10 +953,10 @@ public abstract class AssemblerParser extends Parser {
 
 
     // $ANTLR start "deletar"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:1: deletar : ( 'DELETE_INT' ID | 'DELETE_NODE' ID | 'DELETE_REF' ID );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:56:1: deletar : ( 'DELETE_INT' ID | 'DELETE_NODE' ID | 'DELETE_REF' ID );
     public final void deletar() throws RecognitionException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:9: ( 'DELETE_INT' ID | 'DELETE_NODE' ID | 'DELETE_REF' ID )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:56:9: ( 'DELETE_INT' ID | 'DELETE_NODE' ID | 'DELETE_REF' ID )
             int alt11=3;
             switch ( input.LA(1) ) {
             case 16:
@@ -964,29 +984,29 @@ public abstract class AssemblerParser extends Parser {
 
             switch (alt11) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:11: 'DELETE_INT' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:56:11: 'DELETE_INT' ID
                     {
-                    match(input,16,FOLLOW_16_in_deletar452); 
+                    match(input,16,FOLLOW_16_in_deletar508); 
 
-                    match(input,ID,FOLLOW_ID_in_deletar454); 
+                    match(input,ID,FOLLOW_ID_in_deletar510); 
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:54:11: 'DELETE_NODE' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:57:11: 'DELETE_NODE' ID
                     {
-                    match(input,17,FOLLOW_17_in_deletar466); 
+                    match(input,17,FOLLOW_17_in_deletar522); 
 
-                    match(input,ID,FOLLOW_ID_in_deletar468); 
+                    match(input,ID,FOLLOW_ID_in_deletar524); 
 
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:11: 'DELETE_REF' ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:58:11: 'DELETE_REF' ID
                     {
-                    match(input,18,FOLLOW_18_in_deletar480); 
+                    match(input,18,FOLLOW_18_in_deletar536); 
 
-                    match(input,ID,FOLLOW_ID_in_deletar482); 
+                    match(input,ID,FOLLOW_ID_in_deletar538); 
 
                     }
                     break;
@@ -1037,37 +1057,37 @@ public abstract class AssemblerParser extends Parser {
     public static final BitSet FOLLOW_TYPE_STRUCT_in_criar258 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_15_in_criar274 = new BitSet(new long[]{0x0000000000000010L});
     public static final BitSet FOLLOW_ID_in_criar280 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_ler297 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_ler299 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_ler307 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_INT_in_ler309 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_ler317 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_ler319 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_ler327 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_ler329 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_NOME_REF_in_ler331 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_ler339 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_ler341 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_ler349 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_ler351 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_31_in_escrever364 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever366 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_34_in_escrever379 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever381 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_escrever394 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever396 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_NOME_REF_in_escrever398 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_NULL_in_escrever400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_escrever414 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever416 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_escrever429 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_escrever431 = new BitSet(new long[]{0x0000000000000102L});
-    public static final BitSet FOLLOW_NULL_in_escrever433 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_16_in_deletar452 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_deletar454 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_deletar466 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_deletar468 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_18_in_deletar480 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_deletar482 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_ler301 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_ler307 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_ler321 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_INT_in_ler323 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_ler337 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_ler343 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_ler357 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_ler363 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_NOME_REF_in_ler365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_ler379 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_ler385 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_ler399 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_ler405 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_escrever420 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever422 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_escrever435 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_escrever450 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever452 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_NOME_REF_in_escrever454 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_NULL_in_escrever456 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_escrever470 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever472 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_escrever485 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_escrever487 = new BitSet(new long[]{0x0000000000000102L});
+    public static final BitSet FOLLOW_NULL_in_escrever489 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_deletar508 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_deletar510 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_deletar522 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_deletar524 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_deletar536 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_deletar538 = new BitSet(new long[]{0x0000000000000002L});
 
 }

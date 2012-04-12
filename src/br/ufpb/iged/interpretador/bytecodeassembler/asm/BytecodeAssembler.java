@@ -16,11 +16,12 @@ public class BytecodeAssembler extends AssemblerParser{
 	protected Map<String,Integer> opcodesInstrucoes =
 	        new HashMap<String,Integer>();
 
-	 protected Map<String, LabelSymbol> labels = // label scope
+	 protected Map<String, LabelSymbol> labels = 
 		        new HashMap<String, LabelSymbol>();
-	 protected Map<String, Integer> enderecosMap  = new HashMap<String, Integer>(); 
-	 protected static int ip = 0; // Instruction pointer; used to fill code[]
-	 protected static byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; // code memory
+	 protected Map<String, Integer> enderecosMap  = 
+			 new HashMap<String, Integer>(); 
+	 protected static int ip = 0; 
+	 protected static byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; 
 	 protected int tamMemoriaGlobalEstruturas = 0;
 	 protected int tamMemoriaGlobalReferencias = 0;
 	 protected int tamMemoriaGlobalVariaveisInteiras = 0;
@@ -116,6 +117,41 @@ public class BytecodeAssembler extends AssemblerParser{
 		escreverInteiro(codigo, ip, tamMemoriaGlobalReferencias);
 		
 		enderecosMap.put(id.getText(), tamMemoriaGlobalReferencias);
+		
+	}
+	
+	protected void readIntC(Token opcode, Token intc) {
+		
+		escreverOpcode(opcode);
+		
+		Integer valor = new Integer(intc.getText());
+		
+		escreverInteiro(codigo, ip, valor.intValue());
+		
+	}
+	
+	protected void readRn(Token opcode, Token id, Token nomeRef) {
+		
+		escreverLeituraReferencia(opcode, id);
+		
+		if (nomeRef.getText().equalsIgnoreCase("dado")) 
+			
+			escreverInteiro(codigo, ip, 1);
+		
+		else
+			
+			escreverInteiro(codigo, ip, 2);
+			
+		
+	}
+	
+	protected void escreverLeituraReferencia(Token opcode, Token id) {
+		
+		escreverOpcode(opcode);
+		
+		int endereco = ((Integer)enderecosMap.get(id.getText())).intValue();
+		
+		escreverInteiro(codigo, ip, endereco);
 		
 	}
 	
