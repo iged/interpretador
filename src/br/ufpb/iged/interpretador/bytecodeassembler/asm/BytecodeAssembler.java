@@ -5,7 +5,7 @@ import java.util.Map;
 
 import org.antlr.runtime.TokenStream;
 
-import antlr.Token;
+import org.antlr.runtime.Token;
 import br.ufpb.iged.interpretador.bytecodeassembler.parser.AssemblerParser;
 
 public class BytecodeAssembler extends AssemblerParser{
@@ -18,8 +18,12 @@ public class BytecodeAssembler extends AssemblerParser{
 
 	 protected Map<String, LabelSymbol> labels = // label scope
 		        new HashMap<String, LabelSymbol>();
-	 protected int ip = 0; // Instruction pointer; used to fill code[]
-	 protected byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; // code memory
+	 protected Map<String, Integer> enderecosMap  = new HashMap<String, Integer>(); 
+	 protected static int ip = 0; // Instruction pointer; used to fill code[]
+	 protected static byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; // code memory
+	 protected int tamMemoriaGlobalEstruturas = 0;
+	 protected int tamMemoriaGlobalReferencias = 0;
+	 protected int tamMemoriaGlobalVariaveisInteiras = 0;
 	 
 
 	public BytecodeAssembler(TokenStream lexer, Definicao.Instrucao[] instrucoes) {
@@ -34,9 +38,9 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 	}
 	
-	protected void escreverOpcode(Token token) {
+	protected void escreverOpcode(Token opc) {
 		
-		String nomeInstrucao = token.getText();
+		String nomeInstrucao = opc.getText();
 		
 		Integer opcode = opcodesInstrucoes.get(nomeInstrucao);
 		
@@ -44,6 +48,74 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 		codigo[ip++] = (byte) (opcode.intValue() & 0xFF);
 		
+		
+	}
+	
+	
+	protected void init(Token opcode, Token typeStruct, Token id, Token size) {
+		
+		escreverOpcode(opcode);
+		
+		int valorTipo;
+		
+		if (typeStruct.getText().equalsIgnoreCase("LISTA"))
+			valorTipo = 1;
+		else
+			valorTipo = 2;
+		
+		escreverInteiro(codigo, ip, valorTipo);
+		
+		setTamMemoriaGlobalEstruturas(++tamMemoriaGlobalEstruturas);
+		
+		escreverInteiro(codigo, ip, tamMemoriaGlobalEstruturas);
+		
+		enderecosMap.put(id.getText(), tamMemoriaGlobalEstruturas);
+		
+		if (size != null) 
+			
+			escreverInteiro(codigo, ip, new Integer(size.getText()));
+			
+		
+	}
+	
+	protected void createInt(Token opcode, Token id) {
+		
+		setTamMemoriaGlobalVariaveisInteiras(++tamMemoriaGlobalVariaveisInteiras);
+		
+		escreverOpcode(opcode);
+		
+		escreverInteiro(codigo, ip, tamMemoriaGlobalVariaveisInteiras);
+		
+		enderecosMap.put(id.getText(), tamMemoriaGlobalVariaveisInteiras);
+		
+	}
+	
+	protected void createNode(Token opcode, Token typeStruct) {
+		
+		setTamMemoriaGlobalReferencias(++tamMemoriaGlobalReferencias);
+		
+		escreverOpcode(opcode);
+		
+		int valorTipo;
+		
+		if (typeStruct.getText().equalsIgnoreCase("LISTA"))
+			valorTipo = 1;
+		else
+			valorTipo = 2;
+		
+		escreverInteiro(codigo, ip, valorTipo);
+		
+	}
+	
+	protected void createRef(Token opcode, Token id) {
+		
+		setTamMemoriaGlobalReferencias(++tamMemoriaGlobalReferencias);
+		
+		escreverOpcode(opcode);
+		
+		escreverInteiro(codigo, ip, tamMemoriaGlobalReferencias);
+		
+		enderecosMap.put(id.getText(), tamMemoriaGlobalReferencias);
 		
 	}
 	
@@ -62,17 +134,24 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 	}
 	
+	protected void escreverOpcode(Token opc, Token op) {
+		
+		escreverOpcode(opc);
+		escreverOperando(op);
+		
+	}
+	
 	protected int obterEndereco(String id) {
 		
 		return 0;
 		
 	}
 	
-	protected void verificarAumentoTamanhoMemoria(int index) {
+	protected static void verificarAumentoTamanhoMemoria(int indice) {
 		
-        if ( index >= codigo.length ) {
+        if ( indice >= codigo.length ) {
         	
-            int tamanho = Math.max(index, codigo.length) * 2;
+            int tamanho = Math.max(indice, codigo.length) * 2;
             byte[] novaMemoriaCodigo = new byte[tamanho];
             System.arraycopy(codigo, 0 , novaMemoriaCodigo, 0, codigo.length);
             codigo = novaMemoriaCodigo;
@@ -81,11 +160,43 @@ public class BytecodeAssembler extends AssemblerParser{
         
     }
 	
-	public static void writeInt(byte[] bytes, int index, int value) {
-        bytes[index+0] = (byte)((value>>(8*3))&0xFF); // get highest byte
-        bytes[index+1] = (byte)((value>>(8*2))&0xFF);
-        bytes[index+2] = (byte)((value>>(8*1))&0xFF);
-        bytes[index+3] = (byte)(value&0xFF);
+	
+	public static void escreverInteiro(byte[] bytes, int indice, int valor) {
+		
+		verificarAumentoTamanhoMemoria(ip + 4);
+		
+        bytes[indice + 0] = (byte)((valor >> (8 * 3)) & 0xFF); // get highest byte
+        bytes[indice + 1] = (byte)((valor >> (8 * 2)) & 0xFF);
+        bytes[indice + 2] = (byte)((valor >> (8 * 1)) & 0xFF);
+        bytes[indice + 3] = (byte)(valor & 0xFF);
+        
+        ip += 4;
+        
     }
+
+	public int getTamMemoriaGlobalReferencias() {
+		return tamMemoriaGlobalReferencias;
+	}
+
+	public void setTamMemoriaGlobalReferencias(int tamMemoriaGlobalReferencias) {
+		this.tamMemoriaGlobalReferencias = tamMemoriaGlobalReferencias;
+	}
+
+	public int getTamMemoriaGlobalVariaveisInteiras() {
+		return tamMemoriaGlobalVariaveisInteiras;
+	}
+
+	public void setTamMemoriaGlobalVariaveisInteiras(
+			int tamMemoriaGlobalVariaveisInteiras) {
+		this.tamMemoriaGlobalVariaveisInteiras = tamMemoriaGlobalVariaveisInteiras;
+	}
+
+	public int getTamMemoriaGlobalEstruturas() {
+		return tamMemoriaGlobalEstruturas;
+	}
+
+	public void setTamMemoriaGlobalEstruturas(int tamMemoriaGlobalEstruturas) {
+		this.tamMemoriaGlobalEstruturas = tamMemoriaGlobalEstruturas;
+	}
 
 }
