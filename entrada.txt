@@ -19,3 +19,12 @@ ADD;
 SUB;
 MULT;
 DIV;
+
+		iconst 10
+		iconst 33
+		iadd 
+		iconst 5
+		imul
+L1:		iconst 10
+		ifzero L1
+	
