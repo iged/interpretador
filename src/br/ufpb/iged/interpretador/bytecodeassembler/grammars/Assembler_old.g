@@ -21,10 +21,10 @@ label : ID ':';
 
 instrucao: (aritmetica | manipulacao | desvio)? NOVA_LINHA;
 
-aritmetica : 'iadd'
-           | 'isub'
-           | 'imul'
-           | 'idiv'
+aritmetica : 'ADD'
+           | 'SUB'
+           | 'MULT'
+           | 'DIV'
            ;
       
 manipulacao: (iniciar | criar | ler | escrever | deletar);
