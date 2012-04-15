@@ -1,0 +1,46 @@
+//Contém o conjunto de opcodes das instruções que o interpretador suporta até o momento
+
+opcode hex dec
+ 
+nop 00 0 
+iconst_m1 02 2 
+iconst_0 03 3 
+iconst_1 04 4 
+iconst_2 05 5 
+iconst_3 06 6 
+iconst_4 07 7 
+iconst_5 
+ldc 12 18  
+iload 15 21 
+iload_0 1a 26 
+iload_1 1b 27 
+iload_2 1c 28 
+iload_3 1d 29  
+istore 36 54 
+istore_0 3b 59 
+istore_1 3c 60 
+istore_2 3d 61 
+istore_3 3e 62 
+iadd 60 96 
+isub 64 100 
+imul 68 104 
+idiv 6c 108 
+irem 70 112 
+ineg 74 116 
+iand 7e 126 
+ior 80 128 
+ixor 82 130 
+iinc 84 132 
+ifeq 99 153 
+ifne 9a 154 
+iflt 9b 155 
+ifge 9c 156 
+ifgt 9d 157 
+ifle 9e 158 
+if_icmpeq 9f 159 
+if_icmpne a0 160 
+if_icmplt a1 161 
+if_icmpge a2 162 
+if_icmpgt a3 163 
+if_icmple a4 164 
+goto a7 167  
