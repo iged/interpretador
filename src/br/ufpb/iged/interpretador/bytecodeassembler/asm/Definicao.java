@@ -4,31 +4,6 @@ import br.ufpb.iged.interpretador.bytecodeassembler.parser.AssemblerParser;
 
 public class Definicao {
 	
-	/*public static final int INIT = 1;
-	public static final int CREATE_INT = 2;	
-	public static final int CREATE_NODE = 3;	
-	public static final int CREATE_REF = 4;	
-	public static final int READ_INT = 5;	
-	public static final int READ_INTC = 6;	
-	public static final int READ_VET = 7;	
-	public static final int READ_RN = 8;	
-	public static final int READ_INFO = 9;	
-	public static final int READ_REF = 10;	
-	public static final int WRITE_INT = 11;
-	public static final int WRITE_VET = 12;
-	public static final int WRITE_RN = 13;
-	public static final int WRITE_INFO = 14;
-	public static final int WRITE_REF = 15;
-	public static final int DELETE_INT = 16;
-	public static final int DELETE_NODE = 17;
-	public static final int DELETE_REF = 18;
-	public static final int JMP = 19;
-	public static final int ADD = 20;
-	public static final int SUB = 21;
-	public static final int MULT = 22;
-	public static final int DIV = 23;
-	public static final int LABEL = 24;*/
-	
 	public static final int NOP = 0x0; 
 	
 	public static final int ICONSTM1 = 0x2;
@@ -72,13 +47,6 @@ public class Definicao {
     public static final int IF_ICMPGT = 0xA3;
     public static final int IF_ICMPLE = 0xA4;
     public static final int GOTO = 0xA7;
-       
-	
-	/*public static final int TYPE_STRUCT = AssemblerParser.TYPE_STRUCT;
-	public static final int ID = AssemblerParser.ID;
-	public static final int INT = AssemblerParser.INT;
-	public static final int NOME_REF = AssemblerParser.NOME_REF;
-	public static final int NULL = AssemblerParser.NULL;*/
     
     public static final int ID = AssemblerParser.ID;
     public static final int INT= AssemblerParser.INT;
@@ -95,19 +63,23 @@ public class Definicao {
 		
 		int tipo;
 		
+		int opcode;
+		
 		int n = 0;
 		
-		public Instrucao (String nome) {
+		public Instrucao (String nome, int opcode) {
 			
-			this (nome, 0);
+			this (nome, 0, opcode);
 			
 		}
 		
-		public Instrucao (String nome, int a) {
+		public Instrucao (String nome, int a, int opcode) {
 			
 			this.nome = nome;
 			
 			tipo = a;
+			
+			this.opcode = opcode;
 			
 		}
 		
@@ -116,75 +88,48 @@ public class Definicao {
 	
 	public static Instrucao[] instrucoes = new Instrucao[] {
 		null,
-		/*new Instrucao("INIT", TYPE_STRUCT, ID),
-		new Instrucao("CREATE_INT", ID),
-		new Instrucao("CREATE_NODE", TYPE_STRUCT),
-		new Instrucao("CREATE_REF", ID),
-		new Instrucao("READ_INT", ID),
-		new Instrucao("READ_INTC", INT),
-		new Instrucao("READ_VET", ID),
-		new Instrucao("READ_RN", ID, NOME_REF),
-		new Instrucao("READ_INFO", ID),
-		new Instrucao("READ_REF", ID),
-		new Instrucao("WRITE_INT", ID),
-		new Instrucao("WRITE_VET", ID),
-		new Instrucao("WRITE_RN", ID, NOME_REF),
-        new Instrucao("WRITE_RN", ID, NOME_REF, NULL),
-        new Instrucao("WRITE_INFO", ID),
-        new Instrucao("WRITE_REF", ID),
-        new Instrucao("WRITE_REF", ID, NULL),
-        new Instrucao("DELETE_INT", ID),
-        new Instrucao("DELETE_NODE", ID),
-        new Instrucao("DELETE_REF", ID),
-        new Instrucao("ADD"),
-        new Instrucao("SUB"),
-        new Instrucao("MULT"),
-        new Instrucao("DIV"),
-        new Instrucao("JMP"),
-		new Instrucao("LABEL")*/
-		
-		new Instrucao("NOP"),
-		new Instrucao ("ICONSTM1"),
-		new Instrucao("ICONST0"),
-		new Instrucao("ICONST1"),
-		new Instrucao("ICONST2"),
-	    new Instrucao("ICONST3"),
-	    new Instrucao("ICONST4"),
-	    new Instrucao("ICONST5"),
-	    new Instrucao("LDC", INT),
-	    new Instrucao("ILOAD", INT),
-	    new Instrucao("ILOAD0"),
-	    new Instrucao("ILOAD1"),
-	    new Instrucao("ILOAD2"),
-	    new Instrucao("ILOAD3"),
-	    new Instrucao("ISTORE", INT),
-	    new Instrucao("ISTORE0"),
-	    new Instrucao("ISTORE1"),
-		new Instrucao("ISTORE2"),
-		new Instrucao("ISTORE3"),
-		new Instrucao("IADD"),
-		new Instrucao("ISUB"),
-		new Instrucao("IMUL"),
-		new Instrucao("IDIV"),
-	    new Instrucao("IREM"),
-	    new Instrucao("INEG"),
-	    new Instrucao("IAND"),
-	    new Instrucao("IOR"),
-	    new Instrucao("IXOR"),
-	    new Instrucao("IINC"),
-	    new Instrucao("IFEQ", ID),
-	    new Instrucao("IFNE", ID),
-	    new Instrucao("IFLT", ID),
-	    new Instrucao("IFGE", ID),
-	    new Instrucao("IFGT", ID),
-	    new Instrucao("IFLE", ID),
-	    new Instrucao("IF_ICMPEQ", ID),
-	    new Instrucao("IF_ICMPNE", ID),
-	    new Instrucao("IF_ICMPLT", ID),
-	    new Instrucao("IF_ICMPGE", ID),
-	    new Instrucao("IF_ICMPGT", ID),
-	    new Instrucao("IF_ICMPLE", ID),
-	    new Instrucao("GOTO", ID)
+		new Instrucao("NOP", Definicao.NOP),
+		new Instrucao ("ICONSTM1", Definicao.ICONSTM1),
+		new Instrucao("ICONST0", Definicao.ICONST0),
+		new Instrucao("ICONST1", Definicao.ICONST1),
+		new Instrucao("ICONST2", Definicao.ICONST2),
+	    new Instrucao("ICONST3", Definicao.ICONST3),
+	    new Instrucao("ICONST4", Definicao.ICONST4),
+	    new Instrucao("ICONST5", Definicao.ICONST5),
+	    new Instrucao("LDC", INT, Definicao.LDC),
+	    new Instrucao("ILOAD", INT, Definicao.ILOAD),
+	    new Instrucao("ILOAD0", Definicao.ILOAD0),
+	    new Instrucao("ILOAD1", Definicao.ILOAD1),
+	    new Instrucao("ILOAD2", Definicao.ILOAD2),
+	    new Instrucao("ILOAD3", Definicao.ILOAD3),
+	    new Instrucao("ISTORE", INT, Definicao.ISTORE),
+	    new Instrucao("ISTORE0", Definicao.ISTORE0),
+	    new Instrucao("ISTORE1", Definicao.ISTORE1),
+		new Instrucao("ISTORE2", Definicao.ISTORE2),
+		new Instrucao("ISTORE3", Definicao.ISTORE3),
+		new Instrucao("IADD", Definicao.IADD),
+		new Instrucao("ISUB", Definicao.ISUB),
+		new Instrucao("IMUL", Definicao.IMUL),
+		new Instrucao("IDIV", Definicao.IDIV),
+	    new Instrucao("IREM", Definicao.IREM),
+	    new Instrucao("INEG", Definicao.INEG),
+	    new Instrucao("IAND", Definicao.IADD),
+	    new Instrucao("IOR", Definicao.IOR),
+	    new Instrucao("IXOR", Definicao.IXOR),
+	    new Instrucao("IINC", Definicao.IINC),
+	    new Instrucao("IFEQ", ID, Definicao.IFEQ),
+	    new Instrucao("IFNE", ID, Definicao.IFNE),
+	    new Instrucao("IFLT", ID, Definicao.IFLT),
+	    new Instrucao("IFGE", ID, Definicao.IFGE),
+	    new Instrucao("IFGT", ID, Definicao.IFGT),
+	    new Instrucao("IFLE", ID, Definicao.IFLE),
+	    new Instrucao("IF_ICMPEQ", ID, Definicao.IF_ICMPEQ),
+	    new Instrucao("IF_ICMPNE", ID, Definicao.IF_ICMPNE),
+	    new Instrucao("IF_ICMPLT", ID, Definicao.IF_ICMPLT),
+	    new Instrucao("IF_ICMPGE", ID, Definicao.IF_ICMPGE),
+	    new Instrucao("IF_ICMPGT", ID, Definicao.IF_ICMPGT),
+	    new Instrucao("IF_ICMPLE", ID, Definicao.IF_ICMPLE),
+	    new Instrucao("GOTO", ID, Definicao.GOTO)
 
 	};
  
