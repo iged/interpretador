@@ -1,72 +1,58 @@
 grammar Assembler;
 
-@members {
-
-  protected void init(Token opcode, Token typeStruct, Token id, Token size);
-  protected void createInt(Token opcode, Token id);
-  protected void createNode(Token opcode, Token typeStruct);
-  protected void createRef(Token opcode, Token id);
-  protected void readIntC(Token opcode, Token intc);
-  protected void readRn(Token opcode, Token id, Token nomeRef);
-  protected void escreverLeituraReferencia(Token opcode, Token id);
-  
-}
-
 programa : comando*
          ;
 
 comando : (label instrucao | instrucao);
          
-label : ID ':';
+label : ID SP* ':';
 
-instrucao: (aritmetica | manipulacao | desvio)? NOVA_LINHA;
+instrucao: (aritmetica | load | store | desvio | logica | 'nop')? NOVA_LINHA;
 
 aritmetica : 'iadd'
            | 'isub'
            | 'imul'
            | 'idiv'
-           ;
-      
-manipulacao: (iniciar | criar | ler | escrever | deletar);
-
-desvio : 'JMP' ID;
-  
-iniciar: a = 'INIT' TYPE_STRUCT b = ID INT? {init($a, $TYPE_STRUCT, $b, $INT);};  
-      
-criar : a = 'CREATE_INT' b = ID {createInt($a, $b);}
-      | a = 'CREATE_NODE' TYPE_STRUCT {createNode($a, $TYPE_STRUCT);}
-      | a = 'CREATE_REF' b = ID {createRef($a, $b);}
+           | 'irem'
+           | 'iinc'
+           ; 
+           
+load : 'iconst_' ('m1' | '0'..'5')
+     | 'iload_' RG03
+     | 'iload' SP INT
+     | 'ldc' SP INT
+     ;
+     
+store : 'istore_' RG03
+      | 'istore' SP INT
       ;
 
-ler : a = 'READ_INT' b = ID {escreverLeituraReferencia($a, $b);}
-    | a = 'READ_INTC' INT {readIntC($a, $INT);}
-    | a = 'READ_VET' b = ID {escreverLeituraReferencia($a, $b);}
-    | a = 'READ_RN' b = ID NOME_REF {readRn($a, $b, $NOME_REF);}
-    | a = 'READ_INFO' b = ID {escreverLeituraReferencia($a, $b);}
-    | a = 'READ_REF' b = ID {escreverLeituraReferencia($a, $b);}
-    ;
+logica : 'ineg'
+       | 'iand'
+       | 'ior'
+       | 'ixor'
+       ;
 
-escrever : 'WRITE_INT' ID
-         | 'WRITE_VET' ID
-         | 'WRITE_RN' ID NOME_REF NULL?
-         | 'WRITE_INFO' ID
-         | 'WRITE_REF' ID NULL?
-         ;
+desvio : 'ifeq' SP ID 
+       | 'ifne' SP ID  
+       | 'iflt' SP ID 
+       | 'ifge' SP ID  
+       | 'ifgt' SP ID  
+       | 'ifle' SP ID  
+       | 'if_icmpeq' SP ID  
+       | 'if_icmpne' SP ID  
+       | 'if_icmplt' SP ID  
+       | 'if_icmpge' SP ID  
+       | 'if_icmpgt' SP ID  
+       | 'if_icmple' SP ID  
+       | 'goto' SP ID
+       ;        
 
-deletar : 'DELETE_INT' ID
-        | 'DELETE_NODE' ID
-        | 'DELETE_REF' ID
-        ;
+NULL: ('null' | 'NULL');
 
-NOME_REF: ('dado' | 'prox');
+RG03 :  '0'..'3';
 
-NULL: ('null' | 'NULL'); 
-
-INT: '-'? '0'..'9'+ ;
-
-TYPE_STRUCT : 'LISTA'
-            | 'VETOR'
-            ;
+INT : '-'? '0'..'9'+ ;
 
 ID:  ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
 
@@ -74,4 +60,6 @@ ID:  ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
 
 NOVA_LINHA : ';';
 
-WS : (' ' | '\t' | '\r' | '\n') {skip();} ;
+WS : ('\t' | '\r' | '\n') {skip();} ;
+
+SP: ' ';
