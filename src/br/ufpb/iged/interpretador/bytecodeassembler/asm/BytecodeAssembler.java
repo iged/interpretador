@@ -7,6 +7,7 @@ import org.antlr.runtime.TokenStream;
 
 import org.antlr.runtime.Token;
 import br.ufpb.iged.interpretador.bytecodeassembler.parser.AssemblerParser;
+import br.ufpb.iged.interpretador.excecoes.LabelException;
 
 public class BytecodeAssembler extends AssemblerParser{
 	
@@ -33,7 +34,7 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 		for (int i = 1; i < instrucoes.length; i++) {
 			
-			opcodesInstrucoes.put(instrucoes[i].nome, i);
+			opcodesInstrucoes.put(instrucoes[i].nome, instrucoes[i].opcode);
 			
 		}
 		
@@ -53,111 +54,17 @@ public class BytecodeAssembler extends AssemblerParser{
 	}
 	
 	
-	protected void init(Token opcode, Token typeStruct, Token id, Token size) {
+	protected void escreverOpcode(Token opc, Token op) throws LabelException {
 		
-		escreverOpcode(opcode);
+		escreverOpcode(opc);
 		
-		int valorTipo;
-		
-		if (typeStruct.getText().equalsIgnoreCase("LISTA"))
-			valorTipo = 1;
-		else
-			valorTipo = 2;
-		
-		escreverInteiro(codigo, ip, valorTipo);
-		
-		setTamMemoriaGlobalEstruturas(++tamMemoriaGlobalEstruturas);
-		
-		escreverInteiro(codigo, ip, tamMemoriaGlobalEstruturas);
-		
-		enderecosMap.put(id.getText(), tamMemoriaGlobalEstruturas);
-		
-		if (size != null) 
-			
-			escreverInteiro(codigo, ip, new Integer(size.getText()));
-			
+		escreverOperando(op);
 		
 	}
 	
-	protected void createInt(Token opcode, Token id) {
+	protected void escreverOperando(Token token) throws LabelException {
 		
-		setTamMemoriaGlobalVariaveisInteiras(++tamMemoriaGlobalVariaveisInteiras);
-		
-		escreverOpcode(opcode);
-		
-		escreverInteiro(codigo, ip, tamMemoriaGlobalVariaveisInteiras);
-		
-		enderecosMap.put(id.getText(), tamMemoriaGlobalVariaveisInteiras);
-		
-	}
-	
-	protected void createNode(Token opcode, Token typeStruct) {
-		
-		setTamMemoriaGlobalReferencias(++tamMemoriaGlobalReferencias);
-		
-		escreverOpcode(opcode);
-		
-		int valorTipo;
-		
-		if (typeStruct.getText().equalsIgnoreCase("LISTA"))
-			valorTipo = 1;
-		else
-			valorTipo = 2;
-		
-		escreverInteiro(codigo, ip, valorTipo);
-		
-	}
-	
-	protected void createRef(Token opcode, Token id) {
-		
-		setTamMemoriaGlobalReferencias(++tamMemoriaGlobalReferencias);
-		
-		escreverOpcode(opcode);
-		
-		escreverInteiro(codigo, ip, tamMemoriaGlobalReferencias);
-		
-		enderecosMap.put(id.getText(), tamMemoriaGlobalReferencias);
-		
-	}
-	
-	protected void readIntC(Token opcode, Token intc) {
-		
-		escreverOpcode(opcode);
-		
-		Integer valor = new Integer(intc.getText());
-		
-		escreverInteiro(codigo, ip, valor.intValue());
-		
-	}
-	
-	protected void readRn(Token opcode, Token id, Token nomeRef) {
-		
-		escreverLeituraReferencia(opcode, id);
-		
-		if (nomeRef.getText().equalsIgnoreCase("dado")) 
-			
-			escreverInteiro(codigo, ip, 1);
-		
-		else
-			
-			escreverInteiro(codigo, ip, 2);
-			
-		
-	}
-	
-	protected void escreverLeituraReferencia(Token opcode, Token id) {
-		
-		escreverOpcode(opcode);
-		
-		int endereco = ((Integer)enderecosMap.get(id.getText())).intValue();
-		
-		escreverInteiro(codigo, ip, endereco);
-		
-	}
-	
-	protected void escreverOperando(Token token) {
-		
-		int valor;
+		int valor = 0;
 		
 		String operandoTxt = token.getText();
 		
@@ -168,18 +75,34 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 		}
 		
-	}
-	
-	protected void escreverOpcode(Token opc, Token op) {
-		
-		escreverOpcode(opc);
-		escreverOperando(op);
+		escreverInteiro(codigo, ip, valor);
 		
 	}
 	
-	protected int obterEndereco(String id) {
+	protected void definirLabel(Token id) throws LabelException {
 		
-		return 0;
+		LabelSymbol label = labels.get(id.getText());
+		
+		if (label != null)  
+			throw new LabelException("Label duplicado");
+			
+		
+		label = new LabelSymbol(id.getText(), ip);
+		
+		labels.put(id.getText(), label);
+		
+	}
+	
+	protected int obterEndereco(String id) throws LabelException {
+		
+		LabelSymbol label = labels.get(id);
+		
+		if (label == null) 
+			
+			throw new LabelException("O label referido não existe");
+		
+		
+		return label.address;
 		
 	}
 	
@@ -201,7 +124,7 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 		verificarAumentoTamanhoMemoria(ip + 4);
 		
-        bytes[indice + 0] = (byte)((valor >> (8 * 3)) & 0xFF); // get highest byte
+        bytes[indice + 0] = (byte)((valor >> (8 * 3)) & 0xFF); 
         bytes[indice + 1] = (byte)((valor >> (8 * 2)) & 0xFF);
         bytes[indice + 2] = (byte)((valor >> (8 * 1)) & 0xFF);
         bytes[indice + 3] = (byte)(valor & 0xFF);

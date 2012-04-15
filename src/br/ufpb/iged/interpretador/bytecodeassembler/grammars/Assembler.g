@@ -1,51 +1,59 @@
 grammar Assembler;
 
+@members {
+
+  protected void escreverOpcode(Token opc);
+  protected void escreverOpcode(Token opc, Token op) throws LabelException;
+  protected void definirLabel(Token id) throws LabelException;
+  
+}
+
 programa : comando*
          ;
 
 comando : (label instrucao | instrucao);
          
-label : ID SP* ':';
+label : a = ID SP* ':' {definirLabel($a);};
 
 instrucao: (aritmetica | load | store | desvio | logica | 'nop')? NOVA_LINHA;
 
-aritmetica : 'iadd'
-           | 'isub'
-           | 'imul'
-           | 'idiv'
-           | 'irem'
-           | 'iinc'
+aritmetica : a = 'iadd' {escreverOpcode($a);}
+           | a = 'isub' {escreverOpcode($a);}
+           | a = 'imul' {escreverOpcode($a);}
+           | a = 'idiv' {escreverOpcode($a);}
+           | a = 'irem' {escreverOpcode($a);}
+           | a = 'iinc' {escreverOpcode($a);}
            ; 
            
-load : 'iconst_' ('m1' | '0'..'5')
-     | 'iload_' RG03
-     | 'iload' SP INT
-     | 'ldc' SP INT
+load : a = 'iconst_' ('m1' | '0'..'5') {escreverOpcode($a);}
+     | a = 'iload_' RG03 {escreverOpcode($a);}
+     | a = 'iload' SP b = INT {escreverOpcode($a, $b);}
+     | a = 'ldc' SP b = INT {escreverOpcode($a, $b);}
      ;
      
-store : 'istore_' RG03
-      | 'istore' SP INT
+store : a = 'istore_' RG03 {escreverOpcode($a);}
+      | a = 'istore' SP b = INT {escreverOpcode($a, $b);}
       ;
 
-logica : 'ineg'
-       | 'iand'
-       | 'ior'
-       | 'ixor'
+logica : a = 'ineg' {escreverOpcode($a);}
+       | a = 'iand' {escreverOpcode($a);}
+       | a = 'ior' {escreverOpcode($a);}
+       | a = 'ixor' {escreverOpcode($a);}
        ;
 
-desvio : 'ifeq' SP ID 
-       | 'ifne' SP ID  
-       | 'iflt' SP ID 
-       | 'ifge' SP ID  
-       | 'ifgt' SP ID  
-       | 'ifle' SP ID  
-       | 'if_icmpeq' SP ID  
-       | 'if_icmpne' SP ID  
-       | 'if_icmplt' SP ID  
-       | 'if_icmpge' SP ID  
-       | 'if_icmpgt' SP ID  
-       | 'if_icmple' SP ID  
-       | 'goto' SP ID
+desvio : a = 'ifeq' SP b = ID {escreverOpcode($a, $b);}
+       | a = 'ifne' SP b = ID {escreverOpcode($a, $b);}
+       | a = 'iflt' SP b = ID {escreverOpcode($a, $b);}
+       | a = 'ifge' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'ifgt' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'ifle' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpeq' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpne' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmplt' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpge' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpgt' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmple' SP b = ID {escreverOpcode($a, $b);} 
+       | a = 'goto' SP b = ID {escreverOpcode($a, $b);}
        ;        
 
 NULL: ('null' | 'NULL');
