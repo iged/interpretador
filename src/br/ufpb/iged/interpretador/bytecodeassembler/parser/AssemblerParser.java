@@ -1,14 +1,17 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-15 01:31:48
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-15 19:38:27
 
 package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
 import org.antlr.runtime.*;
+
+import br.ufpb.iged.interpretador.excecoes.LabelException;
+
 import java.util.Stack;
 import java.util.List;
 import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked"})
-public class AssemblerParser extends Parser {
+public abstract class AssemblerParser extends Parser {
     public static final String[] tokenNames = new String[] {
         "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ID", "INT", "NOVA_LINHA", "NULL", "RG03", "SP", "WS", "'0'", "'5'", "':'", "'goto'", "'iadd'", "'iand'", "'iconst_'", "'idiv'", "'if_icmpeq'", "'if_icmpge'", "'if_icmpgt'", "'if_icmple'", "'if_icmplt'", "'if_icmpne'", "'ifeq'", "'ifge'", "'ifgt'", "'ifle'", "'iflt'", "'ifne'", "'iinc'", "'iload'", "'iload_'", "'imul'", "'ineg'", "'ior'", "'irem'", "'istore'", "'istore_'", "'isub'", "'ixor'", "'ldc'", "'m1'", "'nop'"
     };
@@ -76,14 +79,21 @@ public class AssemblerParser extends Parser {
 
 
 
+    protected abstract void escreverOpcode(Token opc);
+    protected abstract void escreverOpcode(Token opc, Token op) throws LabelException;
+    protected abstract void definirLabel(Token id) throws LabelException;
+      
+
+
+
     // $ANTLR start "programa"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:1: programa : ( comando )* ;
-    public final void programa() throws RecognitionException {
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:1: programa : ( comando )* ;
+    public final void programa() throws RecognitionException, LabelException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:10: ( ( comando )* )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:12: ( comando )*
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:10: ( ( comando )* )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:12: ( comando )*
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:12: ( comando )*
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:12: ( comando )*
             loop1:
             do {
                 int alt1=2;
@@ -96,9 +106,9 @@ public class AssemblerParser extends Parser {
 
                 switch (alt1) {
             	case 1 :
-            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:12: comando
+            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:12: comando
             	    {
-            	    pushFollow(FOLLOW_comando_in_programa10);
+            	    pushFollow(FOLLOW_comando_in_programa16);
             	    comando();
 
             	    state._fsp--;
@@ -131,13 +141,13 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "comando"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:1: comando : ( label instrucao | instrucao ) ;
-    public final void comando() throws RecognitionException {
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:1: comando : ( label instrucao | instrucao ) ;
+    public final void comando() throws RecognitionException, LabelException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:9: ( ( label instrucao | instrucao ) )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:11: ( label instrucao | instrucao )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:9: ( ( label instrucao | instrucao ) )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:11: ( label instrucao | instrucao )
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:11: ( label instrucao | instrucao )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:11: ( label instrucao | instrucao )
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -156,15 +166,15 @@ public class AssemblerParser extends Parser {
             }
             switch (alt2) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:12: label instrucao
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:12: label instrucao
                     {
-                    pushFollow(FOLLOW_label_in_comando30);
+                    pushFollow(FOLLOW_label_in_comando36);
                     label();
 
                     state._fsp--;
 
 
-                    pushFollow(FOLLOW_instrucao_in_comando32);
+                    pushFollow(FOLLOW_instrucao_in_comando38);
                     instrucao();
 
                     state._fsp--;
@@ -173,9 +183,9 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:30: instrucao
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:30: instrucao
                     {
-                    pushFollow(FOLLOW_instrucao_in_comando36);
+                    pushFollow(FOLLOW_instrucao_in_comando42);
                     instrucao();
 
                     state._fsp--;
@@ -205,15 +215,17 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "label"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:1: label : ID ( SP )* ':' ;
-    public final void label() throws RecognitionException {
-        try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:7: ( ID ( SP )* ':' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:9: ID ( SP )* ':'
-            {
-            match(input,ID,FOLLOW_ID_in_label54); 
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:1: label : a= ID ( SP )* ':' ;
+    public final void label() throws RecognitionException, LabelException {
+        Token a=null;
 
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:12: ( SP )*
+        try {
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:7: (a= ID ( SP )* ':' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:9: a= ID ( SP )* ':'
+            {
+            a=(Token)match(input,ID,FOLLOW_ID_in_label64); 
+
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:16: ( SP )*
             loop3:
             do {
                 int alt3=2;
@@ -226,9 +238,9 @@ public class AssemblerParser extends Parser {
 
                 switch (alt3) {
             	case 1 :
-            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:12: SP
+            	    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:16: SP
             	    {
-            	    match(input,SP,FOLLOW_SP_in_label56); 
+            	    match(input,SP,FOLLOW_SP_in_label66); 
 
             	    }
             	    break;
@@ -239,7 +251,9 @@ public class AssemblerParser extends Parser {
             } while (true);
 
 
-            match(input,13,FOLLOW_13_in_label59); 
+            match(input,13,FOLLOW_13_in_label69); 
+
+            definirLabel(a);
 
             }
 
@@ -259,13 +273,13 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "instrucao"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:1: instrucao : ( aritmetica | load | store | desvio | logica | 'nop' )? NOVA_LINHA ;
-    public final void instrucao() throws RecognitionException {
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:1: instrucao : ( aritmetica | load | store | desvio | logica | 'nop' )? NOVA_LINHA ;
+    public final void instrucao() throws RecognitionException, LabelException {
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:10: ( ( aritmetica | load | store | desvio | logica | 'nop' )? NOVA_LINHA )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:12: ( aritmetica | load | store | desvio | logica | 'nop' )? NOVA_LINHA
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:10: ( ( aritmetica | load | store | desvio | logica | 'nop' )? NOVA_LINHA )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:12: ( aritmetica | load | store | desvio | logica | 'nop' )? NOVA_LINHA
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:12: ( aritmetica | load | store | desvio | logica | 'nop' )?
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:12: ( aritmetica | load | store | desvio | logica | 'nop' )?
             int alt4=7;
             switch ( input.LA(1) ) {
                 case 15:
@@ -326,9 +340,9 @@ public class AssemblerParser extends Parser {
 
             switch (alt4) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:13: aritmetica
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:13: aritmetica
                     {
-                    pushFollow(FOLLOW_aritmetica_in_instrucao67);
+                    pushFollow(FOLLOW_aritmetica_in_instrucao79);
                     aritmetica();
 
                     state._fsp--;
@@ -337,9 +351,9 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:26: load
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:26: load
                     {
-                    pushFollow(FOLLOW_load_in_instrucao71);
+                    pushFollow(FOLLOW_load_in_instrucao83);
                     load();
 
                     state._fsp--;
@@ -348,9 +362,9 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:33: store
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:33: store
                     {
-                    pushFollow(FOLLOW_store_in_instrucao75);
+                    pushFollow(FOLLOW_store_in_instrucao87);
                     store();
 
                     state._fsp--;
@@ -359,9 +373,9 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:41: desvio
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:41: desvio
                     {
-                    pushFollow(FOLLOW_desvio_in_instrucao79);
+                    pushFollow(FOLLOW_desvio_in_instrucao91);
                     desvio();
 
                     state._fsp--;
@@ -370,9 +384,9 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:50: logica
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:50: logica
                     {
-                    pushFollow(FOLLOW_logica_in_instrucao83);
+                    pushFollow(FOLLOW_logica_in_instrucao95);
                     logica();
 
                     state._fsp--;
@@ -381,9 +395,9 @@ public class AssemblerParser extends Parser {
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:59: 'nop'
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:59: 'nop'
                     {
-                    match(input,44,FOLLOW_44_in_instrucao87); 
+                    match(input,44,FOLLOW_44_in_instrucao99); 
 
                     }
                     break;
@@ -391,7 +405,7 @@ public class AssemblerParser extends Parser {
             }
 
 
-            match(input,NOVA_LINHA,FOLLOW_NOVA_LINHA_in_instrucao91); 
+            match(input,NOVA_LINHA,FOLLOW_NOVA_LINHA_in_instrucao103); 
 
             }
 
@@ -411,24 +425,109 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "aritmetica"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:1: aritmetica : ( 'iadd' | 'isub' | 'imul' | 'idiv' | 'irem' | 'iinc' );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:1: aritmetica : (a= 'iadd' |a= 'isub' |a= 'imul' |a= 'idiv' |a= 'irem' |a= 'iinc' );
     public final void aritmetica() throws RecognitionException {
+        Token a=null;
+
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:12: ( 'iadd' | 'isub' | 'imul' | 'idiv' | 'irem' | 'iinc' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
-            {
-            if ( input.LA(1)==15||input.LA(1)==18||input.LA(1)==31||input.LA(1)==34||input.LA(1)==37||input.LA(1)==40 ) {
-                input.consume();
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:12: (a= 'iadd' |a= 'isub' |a= 'imul' |a= 'idiv' |a= 'irem' |a= 'iinc' )
+            int alt5=6;
+            switch ( input.LA(1) ) {
+            case 15:
+                {
+                alt5=1;
+                }
+                break;
+            case 40:
+                {
+                alt5=2;
+                }
+                break;
+            case 34:
+                {
+                alt5=3;
+                }
+                break;
+            case 18:
+                {
+                alt5=4;
+                }
+                break;
+            case 37:
+                {
+                alt5=5;
+                }
+                break;
+            case 31:
+                {
+                alt5=6;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+
             }
 
+            switch (alt5) {
+                case 1 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:14: a= 'iadd'
+                    {
+                    a=(Token)match(input,15,FOLLOW_15_in_aritmetica115); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:14: a= 'isub'
+                    {
+                    a=(Token)match(input,40,FOLLOW_40_in_aritmetica136); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 3 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:14: a= 'imul'
+                    {
+                    a=(Token)match(input,34,FOLLOW_34_in_aritmetica157); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 4 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:23:14: a= 'idiv'
+                    {
+                    a=(Token)match(input,18,FOLLOW_18_in_aritmetica178); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 5 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:14: a= 'irem'
+                    {
+                    a=(Token)match(input,37,FOLLOW_37_in_aritmetica199); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 6 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:25:14: a= 'iinc'
+                    {
+                    a=(Token)match(input,31,FOLLOW_31_in_aritmetica220); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
 
             }
-
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -445,45 +544,48 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "load"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:1: load : ( 'iconst_' ( 'm1' | '0' .. '5' ) | 'iload_' RG03 | 'iload' SP INT | 'ldc' SP INT );
-    public final void load() throws RecognitionException {
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:1: load : (a= 'iconst_' ( 'm1' | '0' .. '5' ) |a= 'iload_' RG03 |a= 'iload' SP b= INT |a= 'ldc' SP b= INT );
+    public final void load() throws RecognitionException, LabelException {
+        Token a=null;
+        Token b=null;
+
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:6: ( 'iconst_' ( 'm1' | '0' .. '5' ) | 'iload_' RG03 | 'iload' SP INT | 'ldc' SP INT )
-            int alt5=4;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:6: (a= 'iconst_' ( 'm1' | '0' .. '5' ) |a= 'iload_' RG03 |a= 'iload' SP b= INT |a= 'ldc' SP b= INT )
+            int alt6=4;
             switch ( input.LA(1) ) {
             case 17:
                 {
-                alt5=1;
+                alt6=1;
                 }
                 break;
             case 33:
                 {
-                alt5=2;
+                alt6=2;
                 }
                 break;
             case 32:
                 {
-                alt5=3;
+                alt6=3;
                 }
                 break;
             case 42:
                 {
-                alt5=4;
+                alt6=4;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 5, 0, input);
+                    new NoViableAltException("", 6, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt5) {
+            switch (alt6) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:8: 'iconst_' ( 'm1' | '0' .. '5' )
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:8: a= 'iconst_' ( 'm1' | '0' .. '5' )
                     {
-                    match(input,17,FOLLOW_17_in_load206); 
+                    a=(Token)match(input,17,FOLLOW_17_in_load258); 
 
                     if ( input.LA(1)==43 ) {
                         input.consume();
@@ -495,36 +597,44 @@ public class AssemblerParser extends Parser {
                     }
 
 
+                    escreverOpcode(a);
+
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:8: 'iload_' RG03
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:8: a= 'iload_' RG03
                     {
-                    match(input,33,FOLLOW_33_in_load225); 
+                    a=(Token)match(input,33,FOLLOW_33_in_load283); 
 
-                    match(input,RG03,FOLLOW_RG03_in_load227); 
+                    match(input,RG03,FOLLOW_RG03_in_load285); 
+
+                    escreverOpcode(a);
 
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:8: 'iload' SP INT
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:8: a= 'iload' SP b= INT
                     {
-                    match(input,32,FOLLOW_32_in_load236); 
+                    a=(Token)match(input,32,FOLLOW_32_in_load300); 
 
-                    match(input,SP,FOLLOW_SP_in_load238); 
+                    match(input,SP,FOLLOW_SP_in_load302); 
 
-                    match(input,INT,FOLLOW_INT_in_load240); 
+                    b=(Token)match(input,INT,FOLLOW_INT_in_load308); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:23:8: 'ldc' SP INT
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:8: a= 'ldc' SP b= INT
                     {
-                    match(input,42,FOLLOW_42_in_load249); 
+                    a=(Token)match(input,42,FOLLOW_42_in_load323); 
 
-                    match(input,SP,FOLLOW_SP_in_load251); 
+                    match(input,SP,FOLLOW_SP_in_load325); 
 
-                    match(input,INT,FOLLOW_INT_in_load253); 
+                    b=(Token)match(input,INT,FOLLOW_INT_in_load331); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
@@ -546,44 +656,51 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "store"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:1: store : ( 'istore_' RG03 | 'istore' SP INT );
-    public final void store() throws RecognitionException {
-        try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:7: ( 'istore_' RG03 | 'istore' SP INT )
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:1: store : (a= 'istore_' RG03 |a= 'istore' SP b= INT );
+    public final void store() throws RecognitionException, LabelException {
+        Token a=null;
+        Token b=null;
 
-            if ( (LA6_0==39) ) {
-                alt6=1;
+        try {
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:7: (a= 'istore_' RG03 |a= 'istore' SP b= INT )
+            int alt7=2;
+            int LA7_0 = input.LA(1);
+
+            if ( (LA7_0==39) ) {
+                alt7=1;
             }
-            else if ( (LA6_0==38) ) {
-                alt6=2;
+            else if ( (LA7_0==38) ) {
+                alt7=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 6, 0, input);
+                    new NoViableAltException("", 7, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt6) {
+            switch (alt7) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:9: 'istore_' RG03
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:9: a= 'istore_' RG03
                     {
-                    match(input,39,FOLLOW_39_in_store272); 
+                    a=(Token)match(input,39,FOLLOW_39_in_store356); 
 
-                    match(input,RG03,FOLLOW_RG03_in_store274); 
+                    match(input,RG03,FOLLOW_RG03_in_store358); 
+
+                    escreverOpcode(a);
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:9: 'istore' SP INT
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:35:9: a= 'istore' SP b= INT
                     {
-                    match(input,38,FOLLOW_38_in_store284); 
+                    a=(Token)match(input,38,FOLLOW_38_in_store374); 
 
-                    match(input,SP,FOLLOW_SP_in_store286); 
+                    match(input,SP,FOLLOW_SP_in_store376); 
 
-                    match(input,INT,FOLLOW_INT_in_store288); 
+                    b=(Token)match(input,INT,FOLLOW_INT_in_store382); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
@@ -605,24 +722,81 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "logica"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:1: logica : ( 'ineg' | 'iand' | 'ior' | 'ixor' );
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:1: logica : (a= 'ineg' |a= 'iand' |a= 'ior' |a= 'ixor' );
     public final void logica() throws RecognitionException {
+        Token a=null;
+
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:8: ( 'ineg' | 'iand' | 'ior' | 'ixor' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
-            {
-            if ( input.LA(1)==16||(input.LA(1) >= 35 && input.LA(1) <= 36)||input.LA(1)==41 ) {
-                input.consume();
-                state.errorRecovery=false;
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                throw mse;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:8: (a= 'ineg' |a= 'iand' |a= 'ior' |a= 'ixor' )
+            int alt8=4;
+            switch ( input.LA(1) ) {
+            case 35:
+                {
+                alt8=1;
+                }
+                break;
+            case 16:
+                {
+                alt8=2;
+                }
+                break;
+            case 36:
+                {
+                alt8=3;
+                }
+                break;
+            case 41:
+                {
+                alt8=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 8, 0, input);
+
+                throw nvae;
+
             }
 
+            switch (alt8) {
+                case 1 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:10: a= 'ineg'
+                    {
+                    a=(Token)match(input,35,FOLLOW_35_in_logica403); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 2 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:10: a= 'iand'
+                    {
+                    a=(Token)match(input,16,FOLLOW_16_in_logica420); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 3 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:40:10: a= 'ior'
+                    {
+                    a=(Token)match(input,36,FOLLOW_36_in_logica437); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
+                case 4 :
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:10: a= 'ixor'
+                    {
+                    a=(Token)match(input,41,FOLLOW_41_in_logica454); 
+
+                    escreverOpcode(a);
+
+                    }
+                    break;
 
             }
-
         }
         catch (RecognitionException re) {
             reportError(re);
@@ -639,226 +813,255 @@ public class AssemblerParser extends Parser {
 
 
     // $ANTLR start "desvio"
-    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:1: desvio : ( 'ifeq' SP ID | 'ifne' SP ID | 'iflt' SP ID | 'ifge' SP ID | 'ifgt' SP ID | 'ifle' SP ID | 'if_icmpeq' SP ID | 'if_icmpne' SP ID | 'if_icmplt' SP ID | 'if_icmpge' SP ID | 'if_icmpgt' SP ID | 'if_icmple' SP ID | 'goto' SP ID );
-    public final void desvio() throws RecognitionException {
+    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:1: desvio : (a= 'ifeq' SP b= ID |a= 'ifne' SP b= ID |a= 'iflt' SP b= ID |a= 'ifge' SP b= ID |a= 'ifgt' SP b= ID |a= 'ifle' SP b= ID |a= 'if_icmpeq' SP b= ID |a= 'if_icmpne' SP b= ID |a= 'if_icmplt' SP b= ID |a= 'if_icmpge' SP b= ID |a= 'if_icmpgt' SP b= ID |a= 'if_icmple' SP b= ID |a= 'goto' SP b= ID );
+    public final void desvio() throws RecognitionException, LabelException {
+        Token a=null;
+        Token b=null;
+
         try {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:8: ( 'ifeq' SP ID | 'ifne' SP ID | 'iflt' SP ID | 'ifge' SP ID | 'ifgt' SP ID | 'ifle' SP ID | 'if_icmpeq' SP ID | 'if_icmpne' SP ID | 'if_icmplt' SP ID | 'if_icmpge' SP ID | 'if_icmpgt' SP ID | 'if_icmple' SP ID | 'goto' SP ID )
-            int alt7=13;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:8: (a= 'ifeq' SP b= ID |a= 'ifne' SP b= ID |a= 'iflt' SP b= ID |a= 'ifge' SP b= ID |a= 'ifgt' SP b= ID |a= 'ifle' SP b= ID |a= 'if_icmpeq' SP b= ID |a= 'if_icmpne' SP b= ID |a= 'if_icmplt' SP b= ID |a= 'if_icmpge' SP b= ID |a= 'if_icmpgt' SP b= ID |a= 'if_icmple' SP b= ID |a= 'goto' SP b= ID )
+            int alt9=13;
             switch ( input.LA(1) ) {
             case 25:
                 {
-                alt7=1;
+                alt9=1;
                 }
                 break;
             case 30:
                 {
-                alt7=2;
+                alt9=2;
                 }
                 break;
             case 29:
                 {
-                alt7=3;
+                alt9=3;
                 }
                 break;
             case 26:
                 {
-                alt7=4;
+                alt9=4;
                 }
                 break;
             case 27:
                 {
-                alt7=5;
+                alt9=5;
                 }
                 break;
             case 28:
                 {
-                alt7=6;
+                alt9=6;
                 }
                 break;
             case 19:
                 {
-                alt7=7;
+                alt9=7;
                 }
                 break;
             case 24:
                 {
-                alt7=8;
+                alt9=8;
                 }
                 break;
             case 23:
                 {
-                alt7=9;
+                alt9=9;
                 }
                 break;
             case 20:
                 {
-                alt7=10;
+                alt9=10;
                 }
                 break;
             case 21:
                 {
-                alt7=11;
+                alt9=11;
                 }
                 break;
             case 22:
                 {
-                alt7=12;
+                alt9=12;
                 }
                 break;
             case 14:
                 {
-                alt7=13;
+                alt9=13;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 7, 0, input);
+                    new NoViableAltException("", 9, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt7) {
+            switch (alt9) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:10: 'ifeq' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:10: a= 'ifeq' SP b= ID
                     {
-                    match(input,25,FOLLOW_25_in_desvio352); 
+                    a=(Token)match(input,25,FOLLOW_25_in_desvio476); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio354); 
+                    match(input,SP,FOLLOW_SP_in_desvio478); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio356); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio484); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:10: 'ifne' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:45:10: a= 'ifne' SP b= ID
                     {
-                    match(input,30,FOLLOW_30_in_desvio368); 
+                    a=(Token)match(input,30,FOLLOW_30_in_desvio501); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio370); 
+                    match(input,SP,FOLLOW_SP_in_desvio503); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio372); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio509); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 3 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:10: 'iflt' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:10: a= 'iflt' SP b= ID
                     {
-                    match(input,29,FOLLOW_29_in_desvio385); 
+                    a=(Token)match(input,29,FOLLOW_29_in_desvio526); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio387); 
+                    match(input,SP,FOLLOW_SP_in_desvio528); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio389); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio534); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 4 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:10: 'ifge' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:47:10: a= 'ifge' SP b= ID
                     {
-                    match(input,26,FOLLOW_26_in_desvio401); 
+                    a=(Token)match(input,26,FOLLOW_26_in_desvio551); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio403); 
+                    match(input,SP,FOLLOW_SP_in_desvio553); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio405); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio559); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 5 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:40:10: 'ifgt' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:48:10: a= 'ifgt' SP b= ID
                     {
-                    match(input,27,FOLLOW_27_in_desvio418); 
+                    a=(Token)match(input,27,FOLLOW_27_in_desvio577); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio420); 
+                    match(input,SP,FOLLOW_SP_in_desvio579); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio422); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio585); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 6 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:10: 'ifle' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:49:10: a= 'ifle' SP b= ID
                     {
-                    match(input,28,FOLLOW_28_in_desvio435); 
+                    a=(Token)match(input,28,FOLLOW_28_in_desvio603); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio437); 
+                    match(input,SP,FOLLOW_SP_in_desvio605); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio439); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio611); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 7 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:42:10: 'if_icmpeq' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:50:10: a= 'if_icmpeq' SP b= ID
                     {
-                    match(input,19,FOLLOW_19_in_desvio452); 
+                    a=(Token)match(input,19,FOLLOW_19_in_desvio629); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio454); 
+                    match(input,SP,FOLLOW_SP_in_desvio631); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio456); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio637); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 8 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:43:10: 'if_icmpne' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:51:10: a= 'if_icmpne' SP b= ID
                     {
-                    match(input,24,FOLLOW_24_in_desvio469); 
+                    a=(Token)match(input,24,FOLLOW_24_in_desvio655); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio471); 
+                    match(input,SP,FOLLOW_SP_in_desvio657); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio473); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio663); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 9 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:10: 'if_icmplt' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:52:10: a= 'if_icmplt' SP b= ID
                     {
-                    match(input,23,FOLLOW_23_in_desvio486); 
+                    a=(Token)match(input,23,FOLLOW_23_in_desvio681); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio488); 
+                    match(input,SP,FOLLOW_SP_in_desvio683); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio490); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio689); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 10 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:45:10: 'if_icmpge' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:53:10: a= 'if_icmpge' SP b= ID
                     {
-                    match(input,20,FOLLOW_20_in_desvio503); 
+                    a=(Token)match(input,20,FOLLOW_20_in_desvio707); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio505); 
+                    match(input,SP,FOLLOW_SP_in_desvio709); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio507); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio715); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 11 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:10: 'if_icmpgt' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:54:10: a= 'if_icmpgt' SP b= ID
                     {
-                    match(input,21,FOLLOW_21_in_desvio520); 
+                    a=(Token)match(input,21,FOLLOW_21_in_desvio733); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio522); 
+                    match(input,SP,FOLLOW_SP_in_desvio735); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio524); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio741); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 12 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:47:10: 'if_icmple' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:55:10: a= 'if_icmple' SP b= ID
                     {
-                    match(input,22,FOLLOW_22_in_desvio537); 
+                    a=(Token)match(input,22,FOLLOW_22_in_desvio759); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio539); 
+                    match(input,SP,FOLLOW_SP_in_desvio761); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio541); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio767); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
                 case 13 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:48:10: 'goto' SP ID
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:56:10: a= 'goto' SP b= ID
                     {
-                    match(input,14,FOLLOW_14_in_desvio554); 
+                    a=(Token)match(input,14,FOLLOW_14_in_desvio785); 
 
-                    match(input,SP,FOLLOW_SP_in_desvio556); 
+                    match(input,SP,FOLLOW_SP_in_desvio787); 
 
-                    match(input,ID,FOLLOW_ID_in_desvio558); 
+                    b=(Token)match(input,ID,FOLLOW_ID_in_desvio793); 
+
+                    escreverOpcode(a, b);
 
                     }
                     break;
@@ -882,73 +1085,83 @@ public class AssemblerParser extends Parser {
 
  
 
-    public static final BitSet FOLLOW_comando_in_programa10 = new BitSet(new long[]{0x000017FFFFFFC052L});
-    public static final BitSet FOLLOW_label_in_comando30 = new BitSet(new long[]{0x000017FFFFFFC040L});
-    public static final BitSet FOLLOW_instrucao_in_comando32 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instrucao_in_comando36 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ID_in_label54 = new BitSet(new long[]{0x0000000000002200L});
-    public static final BitSet FOLLOW_SP_in_label56 = new BitSet(new long[]{0x0000000000002200L});
-    public static final BitSet FOLLOW_13_in_label59 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_aritmetica_in_instrucao67 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_load_in_instrucao71 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_store_in_instrucao75 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_desvio_in_instrucao79 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_logica_in_instrucao83 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_44_in_instrucao87 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_NOVA_LINHA_in_instrucao91 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_17_in_load206 = new BitSet(new long[]{0x0000080000000000L});
-    public static final BitSet FOLLOW_set_in_load208 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_33_in_load225 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_RG03_in_load227 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_32_in_load236 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_load238 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_INT_in_load240 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_42_in_load249 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_load251 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_INT_in_load253 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_39_in_store272 = new BitSet(new long[]{0x0000000000000100L});
-    public static final BitSet FOLLOW_RG03_in_store274 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_38_in_store284 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_store286 = new BitSet(new long[]{0x0000000000000020L});
-    public static final BitSet FOLLOW_INT_in_store288 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_25_in_desvio352 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio354 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio356 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_30_in_desvio368 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio370 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio372 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_29_in_desvio385 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio387 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio389 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_26_in_desvio401 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio403 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio405 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_27_in_desvio418 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio420 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio422 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_28_in_desvio435 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio437 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio439 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_19_in_desvio452 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio454 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio456 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_24_in_desvio469 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio471 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio473 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_23_in_desvio486 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio488 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio490 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_20_in_desvio503 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio505 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio507 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_21_in_desvio520 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio522 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio524 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_22_in_desvio537 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio539 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio541 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_14_in_desvio554 = new BitSet(new long[]{0x0000000000000200L});
-    public static final BitSet FOLLOW_SP_in_desvio556 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_ID_in_desvio558 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_comando_in_programa16 = new BitSet(new long[]{0x000017FFFFFFC052L});
+    public static final BitSet FOLLOW_label_in_comando36 = new BitSet(new long[]{0x000017FFFFFFC040L});
+    public static final BitSet FOLLOW_instrucao_in_comando38 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instrucao_in_comando42 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ID_in_label64 = new BitSet(new long[]{0x0000000000002200L});
+    public static final BitSet FOLLOW_SP_in_label66 = new BitSet(new long[]{0x0000000000002200L});
+    public static final BitSet FOLLOW_13_in_label69 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_aritmetica_in_instrucao79 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_load_in_instrucao83 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_store_in_instrucao87 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_desvio_in_instrucao91 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_logica_in_instrucao95 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_44_in_instrucao99 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_NOVA_LINHA_in_instrucao103 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_15_in_aritmetica115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_40_in_aritmetica136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_34_in_aritmetica157 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_18_in_aritmetica178 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_37_in_aritmetica199 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_31_in_aritmetica220 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_17_in_load258 = new BitSet(new long[]{0x0000080000000000L});
+    public static final BitSet FOLLOW_set_in_load260 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_33_in_load283 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_RG03_in_load285 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_32_in_load300 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_load302 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_INT_in_load308 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_42_in_load323 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_load325 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_INT_in_load331 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_39_in_store356 = new BitSet(new long[]{0x0000000000000100L});
+    public static final BitSet FOLLOW_RG03_in_store358 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_38_in_store374 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_store376 = new BitSet(new long[]{0x0000000000000020L});
+    public static final BitSet FOLLOW_INT_in_store382 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_35_in_logica403 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_16_in_logica420 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_36_in_logica437 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_41_in_logica454 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_25_in_desvio476 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio478 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio484 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_30_in_desvio501 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio503 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio509 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_29_in_desvio526 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio528 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio534 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_26_in_desvio551 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio553 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio559 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_27_in_desvio577 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio579 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio585 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_28_in_desvio603 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio605 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio611 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_19_in_desvio629 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio631 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio637 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_24_in_desvio655 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio657 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio663 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_23_in_desvio681 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio683 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio689 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_20_in_desvio707 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio709 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio715 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_21_in_desvio733 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio735 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio741 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_22_in_desvio759 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio761 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio767 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_14_in_desvio785 = new BitSet(new long[]{0x0000000000000200L});
+    public static final BitSet FOLLOW_SP_in_desvio787 = new BitSet(new long[]{0x0000000000000010L});
+    public static final BitSet FOLLOW_ID_in_desvio793 = new BitSet(new long[]{0x0000000000000002L});
 
 }
