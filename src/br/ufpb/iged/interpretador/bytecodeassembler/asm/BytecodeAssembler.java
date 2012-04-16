@@ -7,6 +7,7 @@ import org.antlr.runtime.TokenStream;
 
 import org.antlr.runtime.Token;
 import br.ufpb.iged.interpretador.bytecodeassembler.parser.AssemblerParser;
+import br.ufpb.iged.interpretador.excecoes.AcessoIndevidoMemoriaException;
 import br.ufpb.iged.interpretador.excecoes.LabelException;
 
 public class BytecodeAssembler extends AssemblerParser{
@@ -25,7 +26,7 @@ public class BytecodeAssembler extends AssemblerParser{
 	 public static byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; 
 	 protected int tamMemoriaGlobalEstruturas = 0;
 	 protected int tamMemoriaGlobalReferencias = 0;
-	 protected int tamMemoriaGlobalVariaveisInteiras = 0;
+	 protected int tamMemoriaGlobal = 0;
 	 
 
 	public BytecodeAssembler(TokenStream lexer, Definicao.Instrucao[] instrucoes) {
@@ -40,11 +41,73 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 	}
 	
+	protected void verificarAumentoMemoriaGlobal(Token opc) throws AcessoIndevidoMemoriaException {
+		
+		String opcodeTxt = opc.getText();
+		
+		if (opcodeTxt.contains("0")) {
+			
+			if (tamMemoriaGlobal == 0)
+				
+				tamMemoriaGlobal++;
+			
+		}  else if (opcodeTxt.contains("1")) {
+			
+			if (tamMemoriaGlobal == 1)
+				
+				tamMemoriaGlobal++;
+			
+			else if (tamMemoriaGlobal < 1) 
+				
+				throw new AcessoIndevidoMemoriaException();
+			
+		}	else if (opcodeTxt.contains("2")) {
+			
+			if (tamMemoriaGlobal == 2)
+				
+				tamMemoriaGlobal++;
+			
+			else if (tamMemoriaGlobal < 2) 
+				
+				throw new AcessoIndevidoMemoriaException();
+			
+		}	else if (opcodeTxt.contains("3")) {
+			
+			if (tamMemoriaGlobal == 3)
+				
+				tamMemoriaGlobal++;
+			
+			else if (tamMemoriaGlobal < 3) 
+				
+				throw new AcessoIndevidoMemoriaException();
+			
+		}
+		
+		escreverOpcode(opc);
+		
+	}
+	
+	protected void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException {
+		
+		Integer endereco = new Integer(op.getText());
+		
+		if (tamMemoriaGlobal == endereco)
+			
+			tamMemoriaGlobal++;
+		
+		else if (tamMemoriaGlobal < endereco) 
+			
+			throw new AcessoIndevidoMemoriaException();
+		
+		escreverOpcode(opc);
+		
+	}
+	
 	protected void escreverOpcode(Token opc) {
 		
 		String nomeInstrucao = opc.getText();
 		
-		Integer opcode = opcodesInstrucoes.get(nomeInstrucao);
+		Integer opcode = opcodesInstrucoes.get(nomeInstrucao);		
 		
 		verificarAumentoTamanhoMemoria(ip + 1);
 		
@@ -133,6 +196,19 @@ public class BytecodeAssembler extends AssemblerParser{
         
     }
 
+	
+	public byte[] obterCodigoMaquina() { 
+		
+		return codigo; 
+		
+	}
+	
+	 public int obterTamanhoMemoriaCodigo() {
+		 
+		 return ip;
+		 
+	}
+
 	public int getTamMemoriaGlobalReferencias() {
 		return tamMemoriaGlobalReferencias;
 	}
@@ -141,13 +217,13 @@ public class BytecodeAssembler extends AssemblerParser{
 		this.tamMemoriaGlobalReferencias = tamMemoriaGlobalReferencias;
 	}
 
-	public int getTamMemoriaGlobalVariaveisInteiras() {
-		return tamMemoriaGlobalVariaveisInteiras;
+	public int getTamMemoriaGlobal() {
+		return tamMemoriaGlobal;
 	}
 
-	public void setTamMemoriaGlobalVariaveisInteiras(
-			int tamMemoriaGlobalVariaveisInteiras) {
-		this.tamMemoriaGlobalVariaveisInteiras = tamMemoriaGlobalVariaveisInteiras;
+	public void setTamMemoriaGlobal(
+			int tamMemoriaGlobal) {
+		this.tamMemoriaGlobal = tamMemoriaGlobal;
 	}
 
 	public int getTamMemoriaGlobalEstruturas() {

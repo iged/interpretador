@@ -4,6 +4,8 @@ grammar Assembler;
 
   protected void escreverOpcode(Token opc);
   protected void escreverOpcode(Token opc, Token op) throws LabelException;
+  protected void verificarAumentoMemoriaGlobal(Token opc) throws AcessoIndevidoMemoriaException;
+  protected void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException;
   protected void definirLabel(Token id) throws LabelException;
   
 }
@@ -25,7 +27,7 @@ aritmetica : a = 'iadd' {escreverOpcode($a);}
            | a = 'iinc' {escreverOpcode($a);}
            ; 
            
-load : a = 'iconst_m1' 
+load : a = 'iconst_m1'{escreverOpcode($a);} 
      | a = 'iconst_0' {escreverOpcode($a);}
      | a = 'iconst_1' {escreverOpcode($a);}
      | a = 'iconst_2' {escreverOpcode($a);}
@@ -40,11 +42,11 @@ load : a = 'iconst_m1'
      | a = 'ldc' INT {escreverOpcode($a, $INT);}
      ;
      
-store : a = 'istore_0' {escreverOpcode($a);}
-      | a = 'istore_1' {escreverOpcode($a);}
-      | a = 'istore_2' {escreverOpcode($a);}
-      | a = 'istore_3' {escreverOpcode($a);}
-      | a = 'istore' INT {escreverOpcode($a, $INT);}
+store : a = 'istore_0' {verificarAumentoMemoriaGlobal($a);}
+      | a = 'istore_1' {verificarAumentoMemoriaGlobal($a);}
+      | a = 'istore_2' {verificarAumentoMemoriaGlobal($a);}
+      | a = 'istore_3' {verificarAumentoMemoriaGlobal($a);}
+      | a = 'istore' INT {verificarAumentoMemoriaGlobal($a, $INT);}
       ;
 
 logica : a = 'ineg' {escreverOpcode($a);}
