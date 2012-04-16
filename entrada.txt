@@ -1,30 +1,8 @@
-INIT LISTA l;
-CREATE_REF l.inicio;
-WRITE_REF l.inicio null;
-CREATE_INT l.count;
-READ_INTC 0;
-WRITE_INT l.count;
-
-INIT VETOR v 4;
-
-CREATE_NODE LISTA;
-WRITE_REF l.inicio;
-CREATE_NODE LISTA;
-CREATE_REF n;
-WRITE_REF n;
-READ_REF l.inicio;
-WRITE_RN n prox;
-
-ADD;
-SUB;
-MULT;
-DIV;
-
-		iconst 10
-		iconst 33
-		iadd 
-		iconst 5
-		imul
-L1:		iconst 10
-		ifzero L1
+	ldc 10;
+	ldc 33;
+	iadd;
+	ldc 5;
+	imul;
+L1: iconst_0;
+	ifeq L1;
 	

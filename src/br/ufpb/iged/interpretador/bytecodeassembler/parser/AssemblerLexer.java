@@ -1,4 +1,4 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-15 19:38:28
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-15 23:34:14
 
 package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
@@ -10,6 +10,8 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class AssemblerLexer extends Lexer {
     public static final int EOF=-1;
+    public static final int T__9=9;
+    public static final int T__10=10;
     public static final int T__11=11;
     public static final int T__12=12;
     public static final int T__13=13;
@@ -44,13 +46,18 @@ public class AssemblerLexer extends Lexer {
     public static final int T__42=42;
     public static final int T__43=43;
     public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__50=50;
+    public static final int T__51=51;
     public static final int ID=4;
     public static final int INT=5;
     public static final int NOVA_LINHA=6;
     public static final int NULL=7;
-    public static final int RG03=8;
-    public static final int SP=9;
-    public static final int WS=10;
+    public static final int WS=8;
 
     // delegates
     // delegators
@@ -67,15 +74,61 @@ public class AssemblerLexer extends Lexer {
     }
     public String getGrammarFileName() { return "C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g"; }
 
+    // $ANTLR start "T__9"
+    public final void mT__9() throws RecognitionException {
+        try {
+            int _type = T__9;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:2:6: ( ':' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:2:8: ':'
+            {
+            match(':'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__9"
+
+    // $ANTLR start "T__10"
+    public final void mT__10() throws RecognitionException {
+        try {
+            int _type = T__10;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:7: ( 'goto' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:9: 'goto'
+            {
+            match("goto"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__10"
+
     // $ANTLR start "T__11"
     public final void mT__11() throws RecognitionException {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:2:7: ( '0' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:2:9: '0'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:4:7: ( 'iadd' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:4:9: 'iadd'
             {
-            match('0'); 
+            match("iadd"); 
+
+
 
             }
 
@@ -93,10 +146,12 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:7: ( '5' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:3:9: '5'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:5:7: ( 'iand' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:5:9: 'iand'
             {
-            match('5'); 
+            match("iand"); 
+
+
 
             }
 
@@ -114,10 +169,12 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:4:7: ( ':' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:4:9: ':'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:7: ( 'iconst_0' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:9: 'iconst_0'
             {
-            match(':'); 
+            match("iconst_0"); 
+
+
 
             }
 
@@ -135,10 +192,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:5:7: ( 'goto' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:5:9: 'goto'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:7:7: ( 'iconst_1' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:7:9: 'iconst_1'
             {
-            match("goto"); 
+            match("iconst_1"); 
 
 
 
@@ -158,10 +215,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:7: ( 'iadd' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:6:9: 'iadd'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:7: ( 'iconst_2' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:9: 'iconst_2'
             {
-            match("iadd"); 
+            match("iconst_2"); 
 
 
 
@@ -181,10 +238,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:7:7: ( 'iand' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:7:9: 'iand'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:9:7: ( 'iconst_3' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:9:9: 'iconst_3'
             {
-            match("iand"); 
+            match("iconst_3"); 
 
 
 
@@ -204,10 +261,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:7: ( 'iconst_' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:8:9: 'iconst_'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:7: ( 'iconst_4' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:9: 'iconst_4'
             {
-            match("iconst_"); 
+            match("iconst_4"); 
 
 
 
@@ -227,10 +284,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:9:7: ( 'idiv' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:9:9: 'idiv'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:7: ( 'iconst_5' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:9: 'iconst_5'
             {
-            match("idiv"); 
+            match("iconst_5"); 
 
 
 
@@ -250,10 +307,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:7: ( 'if_icmpeq' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:10:9: 'if_icmpeq'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:7: ( 'iconst_m1' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:9: 'iconst_m1'
             {
-            match("if_icmpeq"); 
+            match("iconst_m1"); 
 
 
 
@@ -273,10 +330,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:7: ( 'if_icmpge' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:11:9: 'if_icmpge'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:13:7: ( 'idiv' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:13:9: 'idiv'
             {
-            match("if_icmpge"); 
+            match("idiv"); 
 
 
 
@@ -296,10 +353,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:7: ( 'if_icmpgt' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:12:9: 'if_icmpgt'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:7: ( 'if_icmpeq' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:9: 'if_icmpeq'
             {
-            match("if_icmpgt"); 
+            match("if_icmpeq"); 
 
 
 
@@ -319,10 +376,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:13:7: ( 'if_icmple' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:13:9: 'if_icmple'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:7: ( 'if_icmpge' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:9: 'if_icmpge'
             {
-            match("if_icmple"); 
+            match("if_icmpge"); 
 
 
 
@@ -342,10 +399,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:7: ( 'if_icmplt' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:14:9: 'if_icmplt'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:7: ( 'if_icmpgt' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:9: 'if_icmpgt'
             {
-            match("if_icmplt"); 
+            match("if_icmpgt"); 
 
 
 
@@ -365,10 +422,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:7: ( 'if_icmpne' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:15:9: 'if_icmpne'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:7: ( 'if_icmple' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:9: 'if_icmple'
             {
-            match("if_icmpne"); 
+            match("if_icmple"); 
 
 
 
@@ -388,10 +445,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:7: ( 'ifeq' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:16:9: 'ifeq'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:7: ( 'if_icmplt' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:9: 'if_icmplt'
             {
-            match("ifeq"); 
+            match("if_icmplt"); 
 
 
 
@@ -411,10 +468,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:7: ( 'ifge' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:17:9: 'ifge'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:7: ( 'if_icmpne' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:9: 'if_icmpne'
             {
-            match("ifge"); 
+            match("if_icmpne"); 
 
 
 
@@ -434,10 +491,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:7: ( 'ifgt' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:18:9: 'ifgt'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:7: ( 'ifeq' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:9: 'ifeq'
             {
-            match("ifgt"); 
+            match("ifeq"); 
 
 
 
@@ -457,10 +514,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:7: ( 'ifle' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:19:9: 'ifle'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:7: ( 'ifge' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:9: 'ifge'
             {
-            match("ifle"); 
+            match("ifge"); 
 
 
 
@@ -480,10 +537,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:7: ( 'iflt' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:20:9: 'iflt'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:7: ( 'ifgt' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:9: 'ifgt'
             {
-            match("iflt"); 
+            match("ifgt"); 
 
 
 
@@ -503,10 +560,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:7: ( 'ifne' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:21:9: 'ifne'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:23:7: ( 'ifle' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:23:9: 'ifle'
             {
-            match("ifne"); 
+            match("ifle"); 
 
 
 
@@ -526,10 +583,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:7: ( 'iinc' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:22:9: 'iinc'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:7: ( 'iflt' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:9: 'iflt'
             {
-            match("iinc"); 
+            match("iflt"); 
 
 
 
@@ -549,10 +606,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:23:7: ( 'iload' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:23:9: 'iload'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:25:7: ( 'ifne' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:25:9: 'ifne'
             {
-            match("iload"); 
+            match("ifne"); 
 
 
 
@@ -572,10 +629,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:7: ( 'iload_' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:24:9: 'iload_'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:7: ( 'iinc' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:9: 'iinc'
             {
-            match("iload_"); 
+            match("iinc"); 
 
 
 
@@ -595,10 +652,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:25:7: ( 'imul' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:25:9: 'imul'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:7: ( 'iload' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:9: 'iload'
             {
-            match("imul"); 
+            match("iload"); 
 
 
 
@@ -618,10 +675,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:7: ( 'ineg' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:26:9: 'ineg'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:7: ( 'iload_0' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:9: 'iload_0'
             {
-            match("ineg"); 
+            match("iload_0"); 
 
 
 
@@ -641,10 +698,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:7: ( 'ior' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:27:9: 'ior'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:7: ( 'iload_1' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:9: 'iload_1'
             {
-            match("ior"); 
+            match("iload_1"); 
 
 
 
@@ -664,10 +721,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:7: ( 'irem' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:28:9: 'irem'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:7: ( 'iload_2' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:9: 'iload_2'
             {
-            match("irem"); 
+            match("iload_2"); 
 
 
 
@@ -687,10 +744,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:7: ( 'istore' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:29:9: 'istore'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:7: ( 'iload_3' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:9: 'iload_3'
             {
-            match("istore"); 
+            match("iload_3"); 
 
 
 
@@ -710,10 +767,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:7: ( 'istore_' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:30:9: 'istore_'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:7: ( 'imul' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:9: 'imul'
             {
-            match("istore_"); 
+            match("imul"); 
 
 
 
@@ -733,10 +790,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:7: ( 'isub' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:31:9: 'isub'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:7: ( 'ineg' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:9: 'ineg'
             {
-            match("isub"); 
+            match("ineg"); 
 
 
 
@@ -756,10 +813,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:7: ( 'ixor' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:32:9: 'ixor'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:7: ( 'ior' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:9: 'ior'
             {
-            match("ixor"); 
+            match("ior"); 
 
 
 
@@ -779,10 +836,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:7: ( 'ldc' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:33:9: 'ldc'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:35:7: ( 'irem' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:35:9: 'irem'
             {
-            match("ldc"); 
+            match("irem"); 
 
 
 
@@ -802,10 +859,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:7: ( 'm1' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:34:9: 'm1'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:7: ( 'istore' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:36:9: 'istore'
             {
-            match("m1"); 
+            match("istore"); 
 
 
 
@@ -825,10 +882,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:35:7: ( 'nop' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:35:9: 'nop'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:7: ( 'istore_0' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:37:9: 'istore_0'
             {
-            match("nop"); 
+            match("istore_0"); 
 
 
 
@@ -843,15 +900,176 @@ public class AssemblerLexer extends Lexer {
     }
     // $ANTLR end "T__44"
 
+    // $ANTLR start "T__45"
+    public final void mT__45() throws RecognitionException {
+        try {
+            int _type = T__45;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:7: ( 'istore_1' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:38:9: 'istore_1'
+            {
+            match("istore_1"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__45"
+
+    // $ANTLR start "T__46"
+    public final void mT__46() throws RecognitionException {
+        try {
+            int _type = T__46;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:7: ( 'istore_2' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:39:9: 'istore_2'
+            {
+            match("istore_2"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__46"
+
+    // $ANTLR start "T__47"
+    public final void mT__47() throws RecognitionException {
+        try {
+            int _type = T__47;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:40:7: ( 'istore_3' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:40:9: 'istore_3'
+            {
+            match("istore_3"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__47"
+
+    // $ANTLR start "T__48"
+    public final void mT__48() throws RecognitionException {
+        try {
+            int _type = T__48;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:7: ( 'isub' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:41:9: 'isub'
+            {
+            match("isub"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__48"
+
+    // $ANTLR start "T__49"
+    public final void mT__49() throws RecognitionException {
+        try {
+            int _type = T__49;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:42:7: ( 'ixor' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:42:9: 'ixor'
+            {
+            match("ixor"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__49"
+
+    // $ANTLR start "T__50"
+    public final void mT__50() throws RecognitionException {
+        try {
+            int _type = T__50;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:43:7: ( 'ldc' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:43:9: 'ldc'
+            {
+            match("ldc"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__50"
+
+    // $ANTLR start "T__51"
+    public final void mT__51() throws RecognitionException {
+        try {
+            int _type = T__51;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:7: ( 'nop' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:44:9: 'nop'
+            {
+            match("nop"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "T__51"
+
     // $ANTLR start "NULL"
     public final void mNULL() throws RecognitionException {
         try {
             int _type = NULL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:59:5: ( ( 'null' | 'NULL' ) )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:59:7: ( 'null' | 'NULL' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:5: ( ( 'null' | 'NULL' ) )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:7: ( 'null' | 'NULL' )
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:59:7: ( 'null' | 'NULL' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:7: ( 'null' | 'NULL' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -870,7 +1088,7 @@ public class AssemblerLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:59:8: 'null'
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:8: 'null'
                     {
                     match("null"); 
 
@@ -879,7 +1097,7 @@ public class AssemblerLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:59:17: 'NULL'
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:17: 'NULL'
                     {
                     match("NULL"); 
 
@@ -902,44 +1120,15 @@ public class AssemblerLexer extends Lexer {
     }
     // $ANTLR end "NULL"
 
-    // $ANTLR start "RG03"
-    public final void mRG03() throws RecognitionException {
-        try {
-            int _type = RG03;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:61:6: ( '0' .. '3' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:
-            {
-            if ( (input.LA(1) >= '0' && input.LA(1) <= '3') ) {
-                input.consume();
-            }
-            else {
-                MismatchedSetException mse = new MismatchedSetException(null,input);
-                recover(mse);
-                throw mse;
-            }
-
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "RG03"
-
     // $ANTLR start "INT"
     public final void mINT() throws RecognitionException {
         try {
             int _type = INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:63:5: ( ( '-' )? ( '0' .. '9' )+ )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:63:7: ( '-' )? ( '0' .. '9' )+
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:5: ( ( '-' )? ( '0' .. '9' )+ )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:7: ( '-' )? ( '0' .. '9' )+
             {
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:63:7: ( '-' )?
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:7: ( '-' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -948,7 +1137,7 @@ public class AssemblerLexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:63:7: '-'
+                    // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:7: '-'
                     {
                     match('-'); 
 
@@ -958,7 +1147,7 @@ public class AssemblerLexer extends Lexer {
             }
 
 
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:63:12: ( '0' .. '9' )+
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -1013,8 +1202,8 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:65:3: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )* )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:65:6: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:75:3: ( ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )* )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:75:6: ( 'a' .. 'z' | 'A' .. 'Z' ) ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
                 input.consume();
@@ -1026,7 +1215,7 @@ public class AssemblerLexer extends Lexer {
             }
 
 
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:65:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:75:28: ( 'a' .. 'z' | 'A' .. 'Z' | '0' .. '9' | '.' )*
             loop4:
             do {
                 int alt4=2;
@@ -1076,8 +1265,8 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = NOVA_LINHA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:69:12: ( ';' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:69:14: ';'
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:79:12: ( ';' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:79:14: ';'
             {
             match(';'); 
 
@@ -1097,10 +1286,10 @@ public class AssemblerLexer extends Lexer {
         try {
             int _type = WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:4: ( ( '\\t' | '\\r' | '\\n' ) )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:71:6: ( '\\t' | '\\r' | '\\n' )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:81:4: ( ( ' ' | '\\t' | '\\r' | '\\n' ) )
+            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:81:6: ( ' ' | '\\t' | '\\r' | '\\n' )
             {
-            if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r' ) {
+            if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
                 input.consume();
             }
             else {
@@ -1123,356 +1312,391 @@ public class AssemblerLexer extends Lexer {
     }
     // $ANTLR end "WS"
 
-    // $ANTLR start "SP"
-    public final void mSP() throws RecognitionException {
-        try {
-            int _type = SP;
-            int _channel = DEFAULT_TOKEN_CHANNEL;
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:3: ( ' ' )
-            // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:73:5: ' '
-            {
-            match(' '); 
-
-            }
-
-            state.type = _type;
-            state.channel = _channel;
-        }
-        finally {
-        	// do for sure before leaving
-        }
-    }
-    // $ANTLR end "SP"
-
     public void mTokens() throws RecognitionException {
-        // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | NULL | RG03 | INT | ID | NOVA_LINHA | WS | SP )
-        int alt5=41;
+        // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:8: ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | NULL | INT | ID | NOVA_LINHA | WS )
+        int alt5=48;
         alt5 = dfa5.predict(input);
         switch (alt5) {
             case 1 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:10: T__11
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:10: T__9
+                {
+                mT__9(); 
+
+
+                }
+                break;
+            case 2 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:15: T__10
+                {
+                mT__10(); 
+
+
+                }
+                break;
+            case 3 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:21: T__11
                 {
                 mT__11(); 
 
 
                 }
                 break;
-            case 2 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:16: T__12
+            case 4 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:27: T__12
                 {
                 mT__12(); 
 
 
                 }
                 break;
-            case 3 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:22: T__13
+            case 5 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:33: T__13
                 {
                 mT__13(); 
 
 
                 }
                 break;
-            case 4 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:28: T__14
+            case 6 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:39: T__14
                 {
                 mT__14(); 
 
 
                 }
                 break;
-            case 5 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:34: T__15
+            case 7 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:45: T__15
                 {
                 mT__15(); 
 
 
                 }
                 break;
-            case 6 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:40: T__16
+            case 8 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:51: T__16
                 {
                 mT__16(); 
 
 
                 }
                 break;
-            case 7 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:46: T__17
+            case 9 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:57: T__17
                 {
                 mT__17(); 
 
 
                 }
                 break;
-            case 8 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:52: T__18
+            case 10 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:63: T__18
                 {
                 mT__18(); 
 
 
                 }
                 break;
-            case 9 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:58: T__19
+            case 11 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:69: T__19
                 {
                 mT__19(); 
 
 
                 }
                 break;
-            case 10 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:64: T__20
+            case 12 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:75: T__20
                 {
                 mT__20(); 
 
 
                 }
                 break;
-            case 11 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:70: T__21
+            case 13 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:81: T__21
                 {
                 mT__21(); 
 
 
                 }
                 break;
-            case 12 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:76: T__22
+            case 14 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:87: T__22
                 {
                 mT__22(); 
 
 
                 }
                 break;
-            case 13 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:82: T__23
+            case 15 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:93: T__23
                 {
                 mT__23(); 
 
 
                 }
                 break;
-            case 14 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:88: T__24
+            case 16 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:99: T__24
                 {
                 mT__24(); 
 
 
                 }
                 break;
-            case 15 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:94: T__25
+            case 17 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:105: T__25
                 {
                 mT__25(); 
 
 
                 }
                 break;
-            case 16 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:100: T__26
+            case 18 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:111: T__26
                 {
                 mT__26(); 
 
 
                 }
                 break;
-            case 17 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:106: T__27
+            case 19 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:117: T__27
                 {
                 mT__27(); 
 
 
                 }
                 break;
-            case 18 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:112: T__28
+            case 20 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:123: T__28
                 {
                 mT__28(); 
 
 
                 }
                 break;
-            case 19 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:118: T__29
+            case 21 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:129: T__29
                 {
                 mT__29(); 
 
 
                 }
                 break;
-            case 20 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:124: T__30
+            case 22 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:135: T__30
                 {
                 mT__30(); 
 
 
                 }
                 break;
-            case 21 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:130: T__31
+            case 23 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:141: T__31
                 {
                 mT__31(); 
 
 
                 }
                 break;
-            case 22 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:136: T__32
+            case 24 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:147: T__32
                 {
                 mT__32(); 
 
 
                 }
                 break;
-            case 23 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:142: T__33
+            case 25 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:153: T__33
                 {
                 mT__33(); 
 
 
                 }
                 break;
-            case 24 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:148: T__34
+            case 26 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:159: T__34
                 {
                 mT__34(); 
 
 
                 }
                 break;
-            case 25 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:154: T__35
+            case 27 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:165: T__35
                 {
                 mT__35(); 
 
 
                 }
                 break;
-            case 26 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:160: T__36
+            case 28 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:171: T__36
                 {
                 mT__36(); 
 
 
                 }
                 break;
-            case 27 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:166: T__37
+            case 29 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:177: T__37
                 {
                 mT__37(); 
 
 
                 }
                 break;
-            case 28 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:172: T__38
+            case 30 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:183: T__38
                 {
                 mT__38(); 
 
 
                 }
                 break;
-            case 29 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:178: T__39
+            case 31 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:189: T__39
                 {
                 mT__39(); 
 
 
                 }
                 break;
-            case 30 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:184: T__40
+            case 32 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:195: T__40
                 {
                 mT__40(); 
 
 
                 }
                 break;
-            case 31 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:190: T__41
+            case 33 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:201: T__41
                 {
                 mT__41(); 
 
 
                 }
                 break;
-            case 32 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:196: T__42
+            case 34 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:207: T__42
                 {
                 mT__42(); 
 
 
                 }
                 break;
-            case 33 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:202: T__43
+            case 35 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:213: T__43
                 {
                 mT__43(); 
 
 
                 }
                 break;
-            case 34 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:208: T__44
+            case 36 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:219: T__44
                 {
                 mT__44(); 
 
 
                 }
                 break;
-            case 35 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:214: NULL
+            case 37 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:225: T__45
+                {
+                mT__45(); 
+
+
+                }
+                break;
+            case 38 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:231: T__46
+                {
+                mT__46(); 
+
+
+                }
+                break;
+            case 39 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:237: T__47
+                {
+                mT__47(); 
+
+
+                }
+                break;
+            case 40 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:243: T__48
+                {
+                mT__48(); 
+
+
+                }
+                break;
+            case 41 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:249: T__49
+                {
+                mT__49(); 
+
+
+                }
+                break;
+            case 42 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:255: T__50
+                {
+                mT__50(); 
+
+
+                }
+                break;
+            case 43 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:261: T__51
+                {
+                mT__51(); 
+
+
+                }
+                break;
+            case 44 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:267: NULL
                 {
                 mNULL(); 
 
 
                 }
                 break;
-            case 36 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:219: RG03
-                {
-                mRG03(); 
-
-
-                }
-                break;
-            case 37 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:224: INT
+            case 45 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:272: INT
                 {
                 mINT(); 
 
 
                 }
                 break;
-            case 38 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:228: ID
+            case 46 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:276: ID
                 {
                 mID(); 
 
 
                 }
                 break;
-            case 39 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:231: NOVA_LINHA
+            case 47 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:279: NOVA_LINHA
                 {
                 mNOVA_LINHA(); 
 
 
                 }
                 break;
-            case 40 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:242: WS
+            case 48 :
+                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:290: WS
                 {
                 mWS(); 
-
-
-                }
-                break;
-            case 41 :
-                // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:1:245: SP
-                {
-                mSP(); 
 
 
                 }
@@ -1485,166 +1709,170 @@ public class AssemblerLexer extends Lexer {
 
     protected DFA5 dfa5 = new DFA5(this);
     static final String DFA5_eotS =
-        "\1\uffff\1\20\1\21\1\uffff\6\14\1\44\7\uffff\16\14\1\71\3\14\1\uffff"+
-        "\5\14\1\uffff\10\14\1\115\4\14\1\122\1\uffff\1\123\2\14\1\126\1"+
-        "\127\1\130\1\14\1\132\1\uffff\1\134\1\135\1\136\1\137\1\140\1\141"+
-        "\1\142\1\14\1\144\1\145\1\uffff\1\146\1\14\1\150\1\151\2\uffff\2"+
-        "\152\3\uffff\1\14\11\uffff\1\156\3\uffff\1\14\3\uffff\1\14\3\uffff"+
-        "\1\163\14\uffff";
+        "\2\uffff\5\10\4\uffff\26\10\1\uffff\10\10\1\103\4\10\1\110\1\111"+
+        "\2\10\1\114\1\115\1\116\1\10\1\120\1\uffff\1\122\1\123\1\124\1\125"+
+        "\1\126\1\127\1\130\1\10\1\132\1\133\1\uffff\1\134\1\10\1\136\1\137"+
+        "\2\uffff\2\140\3\uffff\1\10\11\uffff\1\144\3\uffff\1\10\3\uffff"+
+        "\1\10\3\uffff\1\155\33\uffff";
     static final String DFA5_eofS =
-        "\174\uffff";
+        "\u0081\uffff";
     static final String DFA5_minS =
-        "\1\11\2\60\1\uffff\1\157\1\141\1\144\1\61\1\157\1\125\1\60\7\uffff"+
-        "\1\164\1\144\1\157\1\151\1\137\1\156\1\157\1\165\1\145\1\162\1\145"+
-        "\1\164\1\157\1\143\1\56\1\160\1\154\1\114\1\uffff\1\157\2\144\1"+
-        "\156\1\166\1\151\1\161\3\145\1\143\1\141\1\154\1\147\1\56\1\155"+
-        "\1\157\1\142\1\162\1\56\1\uffff\1\56\1\154\1\114\3\56\1\163\1\56"+
-        "\1\143\7\56\1\144\2\56\1\uffff\1\56\1\162\2\56\2\uffff\2\56\3\uffff"+
-        "\1\164\1\uffff\1\155\7\uffff\1\56\3\uffff\1\145\3\uffff\1\137\1"+
-        "\160\2\uffff\1\56\1\uffff\1\145\3\uffff\2\145\5\uffff";
+        "\1\11\1\uffff\1\157\1\141\1\144\1\157\1\125\4\uffff\1\164\1\144"+
+        "\1\157\1\151\1\137\1\156\1\157\1\165\1\145\1\162\1\145\1\164\1\157"+
+        "\1\143\1\160\1\154\1\114\1\157\2\144\1\156\1\166\1\151\1\161\3\145"+
+        "\1\143\1\141\1\154\1\147\1\56\1\155\1\157\1\142\1\162\2\56\1\154"+
+        "\1\114\3\56\1\163\1\56\1\143\7\56\1\144\2\56\1\uffff\1\56\1\162"+
+        "\2\56\2\uffff\2\56\3\uffff\1\164\1\uffff\1\155\7\uffff\1\56\3\uffff"+
+        "\1\145\3\uffff\1\137\1\160\1\60\1\uffff\1\56\1\60\1\145\4\uffff"+
+        "\1\60\11\uffff\2\145\11\uffff";
     static final String DFA5_maxS =
-        "\1\172\2\71\1\uffff\1\157\1\170\1\144\1\61\1\165\1\125\1\71\7\uffff"+
-        "\1\164\1\156\1\157\1\151\2\156\1\157\1\165\1\145\1\162\1\145\1\165"+
-        "\1\157\1\143\1\172\1\160\1\154\1\114\1\uffff\1\157\2\144\1\156\1"+
-        "\166\1\151\1\161\2\164\1\145\1\143\1\141\1\154\1\147\1\172\1\155"+
-        "\1\157\1\142\1\162\1\172\1\uffff\1\172\1\154\1\114\3\172\1\163\1"+
-        "\172\1\143\7\172\1\144\2\172\1\uffff\1\172\1\162\2\172\2\uffff\2"+
-        "\172\3\uffff\1\164\1\uffff\1\155\7\uffff\1\172\3\uffff\1\145\3\uffff"+
-        "\1\137\1\160\2\uffff\1\172\1\uffff\1\156\3\uffff\2\164\5\uffff";
+        "\1\172\1\uffff\1\157\1\170\1\144\1\165\1\125\4\uffff\1\164\1\156"+
+        "\1\157\1\151\2\156\1\157\1\165\1\145\1\162\1\145\1\165\1\157\1\143"+
+        "\1\160\1\154\1\114\1\157\2\144\1\156\1\166\1\151\1\161\2\164\1\145"+
+        "\1\143\1\141\1\154\1\147\1\172\1\155\1\157\1\142\1\162\2\172\1\154"+
+        "\1\114\3\172\1\163\1\172\1\143\7\172\1\144\2\172\1\uffff\1\172\1"+
+        "\162\2\172\2\uffff\2\172\3\uffff\1\164\1\uffff\1\155\7\uffff\1\172"+
+        "\3\uffff\1\145\3\uffff\1\137\1\160\1\63\1\uffff\1\172\1\155\1\156"+
+        "\4\uffff\1\63\11\uffff\2\164\11\uffff";
     static final String DFA5_acceptS =
-        "\3\uffff\1\3\7\uffff\1\45\1\46\1\47\1\50\1\51\1\1\1\2\22\uffff\1"+
-        "\44\24\uffff\1\41\23\uffff\1\32\4\uffff\1\40\1\42\2\uffff\1\4\1"+
-        "\5\1\6\1\uffff\1\10\1\uffff\1\17\1\20\1\21\1\22\1\23\1\24\1\25\1"+
-        "\uffff\1\30\1\31\1\33\1\uffff\1\36\1\37\1\43\2\uffff\1\27\1\26\1"+
-        "\uffff\1\7\1\uffff\1\35\1\34\1\11\2\uffff\1\16\1\12\1\13\1\14\1"+
-        "\15";
+        "\1\uffff\1\1\5\uffff\1\55\1\56\1\57\1\60\70\uffff\1\41\4\uffff\1"+
+        "\52\1\53\2\uffff\1\2\1\3\1\4\1\uffff\1\14\1\uffff\1\23\1\24\1\25"+
+        "\1\26\1\27\1\30\1\31\1\uffff\1\37\1\40\1\42\1\uffff\1\50\1\51\1"+
+        "\54\3\uffff\1\32\3\uffff\1\33\1\34\1\35\1\36\1\uffff\1\43\1\5\1"+
+        "\6\1\7\1\10\1\11\1\12\1\13\1\15\2\uffff\1\22\1\44\1\45\1\46\1\47"+
+        "\1\16\1\17\1\20\1\21";
     static final String DFA5_specialS =
-        "\174\uffff}>";
+        "\u0081\uffff}>";
     static final String[] DFA5_transitionS = {
-            "\2\16\2\uffff\1\16\22\uffff\1\17\14\uffff\1\13\2\uffff\1\1\3"+
-            "\12\1\13\1\2\4\13\1\3\1\15\5\uffff\15\14\1\11\14\14\6\uffff"+
-            "\6\14\1\4\1\14\1\5\2\14\1\6\1\7\1\10\14\14",
-            "\12\13",
-            "\12\13",
+            "\2\12\2\uffff\1\12\22\uffff\1\12\14\uffff\1\7\2\uffff\12\7\1"+
+            "\1\1\11\5\uffff\15\10\1\6\14\10\6\uffff\6\10\1\2\1\10\1\3\2"+
+            "\10\1\4\1\10\1\5\14\10",
             "",
-            "\1\22",
-            "\1\23\1\uffff\1\24\1\25\1\uffff\1\26\2\uffff\1\27\2\uffff\1"+
-            "\30\1\31\1\32\1\33\2\uffff\1\34\1\35\4\uffff\1\36",
+            "\1\13",
+            "\1\14\1\uffff\1\15\1\16\1\uffff\1\17\2\uffff\1\20\2\uffff\1"+
+            "\21\1\22\1\23\1\24\2\uffff\1\25\1\26\4\uffff\1\27",
+            "\1\30",
+            "\1\31\5\uffff\1\32",
+            "\1\33",
+            "",
+            "",
+            "",
+            "",
+            "\1\34",
+            "\1\35\11\uffff\1\36",
             "\1\37",
             "\1\40",
-            "\1\41\5\uffff\1\42",
-            "\1\43",
-            "\12\13",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "\1\45",
-            "\1\46\11\uffff\1\47",
+            "\1\41\5\uffff\1\42\1\uffff\1\43\4\uffff\1\44\1\uffff\1\45",
+            "\1\46",
+            "\1\47",
             "\1\50",
             "\1\51",
-            "\1\52\5\uffff\1\53\1\uffff\1\54\4\uffff\1\55\1\uffff\1\56",
+            "\1\52",
+            "\1\53",
+            "\1\54\1\55",
+            "\1\56",
             "\1\57",
             "\1\60",
             "\1\61",
             "\1\62",
             "\1\63",
             "\1\64",
-            "\1\65\1\66",
+            "\1\65",
+            "\1\66",
             "\1\67",
             "\1\70",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\72",
-            "\1\73",
-            "\1\74",
-            "",
-            "\1\75",
+            "\1\71",
+            "\1\72\16\uffff\1\73",
+            "\1\74\16\uffff\1\75",
             "\1\76",
             "\1\77",
             "\1\100",
             "\1\101",
             "\1\102",
-            "\1\103",
-            "\1\104\16\uffff\1\105",
-            "\1\106\16\uffff\1\107",
-            "\1\110",
-            "\1\111",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\104",
+            "\1\105",
+            "\1\106",
+            "\1\107",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
             "\1\112",
             "\1\113",
-            "\1\114",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\116",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
             "\1\117",
-            "\1\120",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
             "\1\121",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\124",
-            "\1\125",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
             "\1\131",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\133",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\143",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
             "",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\135",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "",
+            "",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\6\uffff\32\10",
+            "",
+            "",
+            "",
+            "\1\141",
+            "",
+            "\1\142",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\4\uffff\1\143\1\uffff\32"+
+            "\10",
+            "",
+            "",
+            "",
+            "\1\145",
+            "",
+            "",
+            "",
+            "\1\146",
             "\1\147",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
+            "\1\150\1\151\1\152\1\153",
+            "",
+            "\1\10\1\uffff\12\10\7\uffff\32\10\4\uffff\1\154\1\uffff\32"+
+            "\10",
+            "\1\156\1\157\1\160\1\161\1\162\1\163\67\uffff\1\164",
+            "\1\165\1\uffff\1\166\4\uffff\1\167\1\uffff\1\170",
             "",
             "",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\6\uffff\32\14",
             "",
             "",
-            "",
-            "\1\153",
-            "",
-            "\1\154",
-            "",
-            "",
+            "\1\171\1\172\1\173\1\174",
             "",
             "",
             "",
             "",
             "",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\4\uffff\1\155\1\uffff\32"+
-            "\14",
             "",
             "",
             "",
-            "\1\157",
+            "",
+            "\1\175\16\uffff\1\176",
+            "\1\177\16\uffff\1\u0080",
             "",
             "",
             "",
-            "\1\160",
-            "\1\161",
             "",
-            "",
-            "\1\14\1\uffff\12\14\7\uffff\32\14\4\uffff\1\162\1\uffff\32"+
-            "\14",
-            "",
-            "\1\164\1\uffff\1\165\4\uffff\1\166\1\uffff\1\167",
-            "",
-            "",
-            "",
-            "\1\170\16\uffff\1\171",
-            "\1\172\16\uffff\1\173",
             "",
             "",
             "",
@@ -1682,7 +1910,7 @@ public class AssemblerLexer extends Lexer {
             this.transition = DFA5_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | NULL | RG03 | INT | ID | NOVA_LINHA | WS | SP );";
+            return "1:1: Tokens : ( T__9 | T__10 | T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | NULL | INT | ID | NOVA_LINHA | WS );";
         }
     }
  
