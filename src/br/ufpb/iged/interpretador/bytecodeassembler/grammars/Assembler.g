@@ -13,7 +13,7 @@ programa : comando*
 
 comando : (label instrucao | instrucao);
          
-label : a = ID SP* ':' {definirLabel($a);};
+label : a = ID ':' {definirLabel($a);};
 
 instrucao: (aritmetica | load | store | desvio | logica | 'nop')? NOVA_LINHA;
 
@@ -25,14 +25,26 @@ aritmetica : a = 'iadd' {escreverOpcode($a);}
            | a = 'iinc' {escreverOpcode($a);}
            ; 
            
-load : a = 'iconst_' ('m1' | '0'..'5') {escreverOpcode($a);}
-     | a = 'iload_' RG03 {escreverOpcode($a);}
-     | a = 'iload' SP b = INT {escreverOpcode($a, $b);}
-     | a = 'ldc' SP b = INT {escreverOpcode($a, $b);}
+load : a = 'iconst_m1' 
+     | a = 'iconst_0' {escreverOpcode($a);}
+     | a = 'iconst_1' {escreverOpcode($a);}
+     | a = 'iconst_2' {escreverOpcode($a);}
+     | a = 'iconst_3'{escreverOpcode($a);}
+     | a = 'iconst_4'{escreverOpcode($a);}
+     | a = 'iconst_5'{escreverOpcode($a);}
+     | a = 'iload_0' {escreverOpcode($a);}
+     | a = 'iload_1' {escreverOpcode($a);}
+     | a = 'iload_2' {escreverOpcode($a);}
+     | a = 'iload_3' {escreverOpcode($a);}
+     | a = 'iload' INT {escreverOpcode($a, $INT);}
+     | a = 'ldc' INT {escreverOpcode($a, $INT);}
      ;
      
-store : a = 'istore_' RG03 {escreverOpcode($a);}
-      | a = 'istore' SP b = INT {escreverOpcode($a, $b);}
+store : a = 'istore_0' {escreverOpcode($a);}
+      | a = 'istore_1' {escreverOpcode($a);}
+      | a = 'istore_2' {escreverOpcode($a);}
+      | a = 'istore_3' {escreverOpcode($a);}
+      | a = 'istore' INT {escreverOpcode($a, $INT);}
       ;
 
 logica : a = 'ineg' {escreverOpcode($a);}
@@ -41,24 +53,22 @@ logica : a = 'ineg' {escreverOpcode($a);}
        | a = 'ixor' {escreverOpcode($a);}
        ;
 
-desvio : a = 'ifeq' SP b = ID {escreverOpcode($a, $b);}
-       | a = 'ifne' SP b = ID {escreverOpcode($a, $b);}
-       | a = 'iflt' SP b = ID {escreverOpcode($a, $b);}
-       | a = 'ifge' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'ifgt' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'ifle' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpeq' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpne' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmplt' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpge' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpgt' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmple' SP b = ID {escreverOpcode($a, $b);} 
-       | a = 'goto' SP b = ID {escreverOpcode($a, $b);}
+desvio : a = 'ifeq' b = ID {escreverOpcode($a, $b);}
+       | a = 'ifne' b = ID {escreverOpcode($a, $b);}
+       | a = 'iflt' b = ID {escreverOpcode($a, $b);}
+       | a = 'ifge' b = ID {escreverOpcode($a, $b);} 
+       | a = 'ifgt' b = ID {escreverOpcode($a, $b);} 
+       | a = 'ifle' b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpeq' b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpne' b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmplt' b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpge' b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmpgt' b = ID {escreverOpcode($a, $b);} 
+       | a = 'if_icmple' b = ID {escreverOpcode($a, $b);} 
+       | a = 'goto' b = ID {escreverOpcode($a, $b);}
        ;        
 
 NULL: ('null' | 'NULL');
-
-RG03 :  '0'..'3';
 
 INT : '-'? '0'..'9'+ ;
 
@@ -68,6 +78,4 @@ ID:  ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
 
 NOVA_LINHA : ';';
 
-WS : ('\t' | '\r' | '\n') {skip();} ;
-
-SP: ' ';
+WS : (' ' | '\t' | '\r' | '\n') {skip();} ;

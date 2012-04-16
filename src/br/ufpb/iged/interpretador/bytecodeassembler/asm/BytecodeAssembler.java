@@ -22,7 +22,7 @@ public class BytecodeAssembler extends AssemblerParser{
 	 protected Map<String, Integer> enderecosMap  = 
 			 new HashMap<String, Integer>(); 
 	 protected static int ip = 0; 
-	 protected static byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; 
+	 public static byte[] codigo = new byte[TAMANHO_INICIAL_MEMORIA_CODIGO]; 
 	 protected int tamMemoriaGlobalEstruturas = 0;
 	 protected int tamMemoriaGlobalReferencias = 0;
 	 protected int tamMemoriaGlobalVariaveisInteiras = 0;
@@ -48,7 +48,7 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 		verificarAumentoTamanhoMemoria(ip + 1);
 		
-		codigo[ip++] = (byte) (opcode.intValue() & 0xFF);
+		codigo[ip++] = (byte)(opcode.intValue() & 0xFF);
 		
 		
 	}

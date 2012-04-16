@@ -21,6 +21,13 @@ public class Test {
         AssemblerParser parser = new BytecodeAssembler(tokens, Definicao.instrucoes);
         parser.programa();
         
+        for (int i = 0; i < BytecodeAssembler.codigo.length ; i++) {
+        	
+        	System.out.print(BytecodeAssembler.codigo[i] + " ");
+        	
+        }
+      
+        
     }
     
 }
