@@ -2,6 +2,7 @@ package br.ufpb.iged.interpretador.principal;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
+import java.util.Scanner;
 
 import org.antlr.runtime.ANTLRInputStream;
 import org.antlr.runtime.CommonTokenStream;
@@ -28,30 +29,14 @@ public class Interpretador {
     
     int sp = -1;
     
-    boolean trace = false;
-    
     public static void main(String[] args) throws Exception{
-    	
-        /*boolean trace = false;
-        boolean disassemble = false;
-        boolean dump = false;
-        String filename=null;
-        int i = 0;
-        while ( i<args.length ) {
-            if ( args[i].equals("-trace") ) { trace = true; i++; }
-            else if ( args[i].equals("-dis") ) { disassemble = true; i++; }
-            else if ( args[i].equals("-dump") ) { dump = true; i++; }
-            else { filename = args[i]; i++; }
-        } */
 
         InputStream entrada  = new FileInputStream(NOME_ARQUIVO_ENTRADA);
 
         Interpretador interpretador = new Interpretador();
         carregar(interpretador, entrada);
-        //interpretador.trace = trace;
-        //interpretador.exec();
-        //if ( disassemble ) interpretador.disassemble();
-        //if ( dump) interpretador.coredump();
+        interpretador.cpu();
+        
     	
     }
     
@@ -67,10 +52,7 @@ public class Interpretador {
             interp.codigo = assembler.obterCodigoMaquina();
             interp.tamanhoCodigo = assembler.obterTamanhoMemoriaCodigo();
             interp.memoriaGlobal = new Object[assembler.getTamMemoriaGlobal()];
-           /* interp.disasm = new DisAssembler(interp.code,
-                                             interp.codeSize,
-                                             interp.constPool);
-            hasErrors = assembler.getNumberOfSyntaxErrors()>0;*/
+          
         }
         finally {
             input.close();
@@ -92,6 +74,10 @@ public class Interpretador {
     		
     		opcode = codigo[ip];
     		
+    		if (opcode < 0) 
+    			
+    			opcode = recuperarValorOpcode(opcode);
+    		
     		switch(opcode) {
     		
     		//nenhuma operação
@@ -104,7 +90,7 @@ public class Interpretador {
     			  			
     			op1 = (Integer)pilhaOperandos[sp];
     			
-    			op1 = 0 - op1;
+    			pilhaOperandos[sp] = 0 - op1;
     			
     		};break;
     		
@@ -172,7 +158,7 @@ public class Interpretador {
     			
     			op1 = (Integer)pilhaOperandos[sp];
     			
-    			pilhaOperandos[sp] = op1++;
+    			pilhaOperandos[sp] = ++op1;
     			
     		};break;
     		
@@ -294,15 +280,11 @@ public class Interpretador {
     			
     			memoriaGlobal[0] = pilhaOperandos[sp];
     			
-    			sp--;
-    			
     		};break;
     		
     		case Definicao.ISTORE1: {
     			
     			memoriaGlobal[1] = pilhaOperandos[sp];
-    			
-    			sp--;
     			
     		};break;
     		
@@ -310,15 +292,11 @@ public class Interpretador {
     			
     			memoriaGlobal[2] = pilhaOperandos[sp];
     			
-    			sp--;
-    			
     		};break;
     		
     		case Definicao.ISTORE3: {
     			
     			memoriaGlobal[3] = pilhaOperandos[sp];
-    			
-    			sp--;
     			
     		};break;
     		
@@ -327,8 +305,6 @@ public class Interpretador {
     			op1 = obterOperandoInteiro();
     			
     			memoriaGlobal[op1] = pilhaOperandos[sp];
-    			
-    			sp--;
     			
     		};break;
     		
@@ -605,6 +581,9 @@ public class Interpretador {
     			
     			ip++;
     		
+    		//Para testes
+    		exibirTela();
+    		
     		
     	}
     	
@@ -624,11 +603,58 @@ public class Interpretador {
     
     protected int obterOperandoInteiro() {
     	
-    	int op = BytecodeAssembler.obterInteiro(codigo, ip);
+    	int op = BytecodeAssembler.obterInteiro(codigo, ip + 1);
     	
-    	ip++;
+    	ip += 4;
     	
     	return op;
+    	
+    }
+    
+    protected short recuperarValorOpcode(short a) {
+    	
+    	return (short) (128 + (128 + a));
+    	
+    }
+    
+    //Usado somente para testes
+    protected void exibirTela() {
+    	
+    	int i;
+    	
+    	System.out.println("IP: "+ip);
+    	
+    	System.out.println("SP: " +sp);
+    	
+    	System.out.print("Memória do código: ");
+    	
+    	for (i = 0; i < codigo.length; i++)
+    		
+    		System.out.print(codigo[i]+" ");
+    	
+    	System.out.print("\n");
+    	
+    	System.out.print("Memória global das variáveis: ");
+    	
+    	for (i = 0; i < memoriaGlobal.length; i++)
+    		
+    		System.out.print(memoriaGlobal[i]+" ");
+    	
+    	System.out.print("\n");
+    	
+    	System.out.print("Pilha: ");
+    	
+    	for (i = 0; i < pilhaOperandos.length; i++)
+    		
+    		System.out.print(pilhaOperandos[i]+" ");
+    	
+    	System.out.print("\n\n");
+    	
+    	System.out.print("Pressione qualquer tecla para ir para a próxima instrução: ");
+    	
+    	Scanner in = new Scanner(System.in);
+    	
+    	in.next();
     	
     }
 
