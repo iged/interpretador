@@ -87,7 +87,7 @@ public class BytecodeAssembler extends AssemblerParser{
 		
 	}
 	
-	protected void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException {
+	protected void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException, LabelException {
 		
 		Integer endereco = new Integer(op.getText());
 		
@@ -99,7 +99,7 @@ public class BytecodeAssembler extends AssemblerParser{
 			
 			throw new AcessoIndevidoMemoriaException();
 		
-		escreverOpcode(opc);
+		escreverOpcode(opc, op); 
 		
 	}
 	

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-17 12:38:47
+// $ANTLR 3.4 C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g 2012-04-17 16:32:57
 
 package br.ufpb.iged.interpretador.bytecodeassembler.parser;
 
@@ -90,7 +90,7 @@ public abstract class AssemblerParser extends Parser {
     protected abstract void escreverOpcode(Token opc);
     protected abstract void escreverOpcode(Token opc, Token op) throws LabelException;
     protected abstract void verificarAumentoMemoriaGlobal(Token opc) throws AcessoIndevidoMemoriaException;
-    protected abstract void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException;
+    protected abstract void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException, LabelException;
     protected abstract void definirLabel(Token id) throws LabelException;
       
 
@@ -778,7 +778,7 @@ public abstract class AssemblerParser extends Parser {
 
     // $ANTLR start "store"
     // C:\\Users\\Tiago\\.ssh\\interpretador\\src\\br\\ufpb\\iged\\interpretador\\bytecodeassembler\\grammars\\Assembler.g:46:1: store : (a= 'istore_0' |a= 'istore_1' |a= 'istore_2' |a= 'istore_3' |a= 'istore' INT );
-    public final void store() throws RecognitionException, AcessoIndevidoMemoriaException {
+    public final void store() throws RecognitionException, AcessoIndevidoMemoriaException, LabelException {
         Token a=null;
         Token INT3=null;
 
