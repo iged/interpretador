@@ -195,6 +195,17 @@ public class BytecodeAssembler extends AssemblerParser{
         ip += 4;
         
     }
+	
+	public static int obterInteiro(byte[] memoria, int indice) {
+		
+        int b1 = memoria[indice++]&0xFF; 
+        int b2 = memoria[indice++]&0xFF;
+        int b3 = memoria[indice++]&0xFF;
+        int b4 = memoria[indice++]&0xFF;
+        int palavra = b1<<(8*3) | b2<<(8*2) | b3<<(8*1) | b4;
+        return palavra;
+        
+    }
 
 	
 	public byte[] obterCodigoMaquina() { 

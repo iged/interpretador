@@ -16,7 +16,7 @@ public class Interpretador {
 	
 	public static final int TAMANHO_INICIAL_PILHA_OPERANDOS = 100;
 	
-	int ip;
+	int ip = 0;
 	
     byte[] codigo;
     
@@ -76,6 +76,186 @@ public class Interpretador {
             input.close();
         }
         return hasErrors;
+    }
+    
+    protected void cpu() {
+    	
+    	int op1, op2;
+    	
+    	short opcode;
+    	
+    	while (ip < tamanhoCodigo) {
+    		
+    		opcode = codigo[ip];
+    		
+    		switch(opcode) {
+    		
+    		case Definicao.NOP : ;break;
+    		
+    		case Definicao.GOTO: {
+    			
+    			op1 = obterOperandoInteiro();
+    			
+    			ip = op1;
+    			
+    		};break;
+    		
+    		//operações aritméticas
+    		
+    		case Definicao.IADD : {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    			pilhaOperandos[sp] = op1 + op2;
+    			
+    		};break;
+    		
+    		case Definicao.ISUB: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    			pilhaOperandos[sp] = op1 - op2;
+    			
+    		};break;
+    		
+    		case Definicao.IMUL: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    			pilhaOperandos[sp] = op1 * op2;
+    			
+    		};break;
+    		
+    		case Definicao.IDIV: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    			pilhaOperandos[sp] = op1 / op2;
+    			
+    		};break;
+    		
+    		case Definicao.IREM: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    			pilhaOperandos[sp] = op1 % op2;
+    			
+    		};break;
+    		
+    		case Definicao.IINC: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			pilhaOperandos[sp] = op1++;
+    			
+    		};break;
+    		
+    		//operações de empilhamento de constantes
+    		
+    		case Definicao.ICONST0: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = 0;
+    			
+    		};break;
+    		
+    		case Definicao.ICONST1: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = 1;
+    			
+    		};break;
+    		
+    		case Definicao.ICONST2: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = 2;
+    			
+    		};break;
+    		
+    		case Definicao.ICONST3: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = 3;
+    			
+    		};break;
+    		
+    		case Definicao.ICONST4: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = 4;
+    			
+    		};break;
+    		
+    		case Definicao.ICONST5: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = 5;
+    			
+    		};break;
+    		
+    		case Definicao.ICONSTM1: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = -1;
+    			
+    		};break;
+    		
+    		case Definicao.LDC: {
+    			
+    			sp++;
+    			
+    			op1 = obterOperandoInteiro();
+    			
+    			pilhaOperandos[sp] = op1;
+    			
+    		};break;
+    		   		
+    		}
+    		
+    		ip++;
+    		
+    		
+    	}
+    	
+    	
+    }
+    
+    protected int obterOperandoInteiro() {
+    	
+    	int op = BytecodeAssembler.obterInteiro(codigo, ip);
+    	
+    	ip++;
+    	
+    	return op;
+    	
     }
 
 
