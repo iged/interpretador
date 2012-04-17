@@ -84,23 +84,29 @@ public class Interpretador {
     	
     	short opcode;
     	
+    	boolean desvio;
+    	
     	while (ip < tamanhoCodigo) {
+    		
+    		desvio = false;
     		
     		opcode = codigo[ip];
     		
     		switch(opcode) {
     		
+    		//nenhuma operação
+    		
     		case Definicao.NOP : ;break;
     		
-    		case Definicao.GOTO: {
+    		//operações aritméticas
+    		 
+    		case Definicao.INEG: {
+    			  			
+    			op1 = (Integer)pilhaOperandos[sp];
     			
-    			op1 = obterOperandoInteiro();
-    			
-    			ip = op1;
+    			op1 = 0 - op1;
     			
     		};break;
-    		
-    		//operações aritméticas
     		
     		case Definicao.IADD : {
     			
@@ -237,14 +243,382 @@ public class Interpretador {
     			pilhaOperandos[sp] = op1;
     			
     		};break;
+    		
+    		//operações de load
+    		
+    		case Definicao.ILOAD0: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = memoriaGlobal[0]; 
+    			
+    		};break;
+    		
+    		case Definicao.ILOAD1: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = memoriaGlobal[1]; 
+    			
+    		};break;
+    		
+    		case Definicao.ILOAD2: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = memoriaGlobal[2]; 
+    			
+    		};break;
+    		
+    		case Definicao.ILOAD3: {
+    			
+    			sp++;
+    			
+    			pilhaOperandos[sp] = memoriaGlobal[3]; 
+    			
+    		};break;
+    		
+    		case Definicao.ILOAD: {
+    			
+    			sp++;
+    			
+    			op1 = obterOperandoInteiro();
+    			
+    			pilhaOperandos[sp] = memoriaGlobal[op1]; 
+    			
+    		};break;
+    		
+    		//operações de store
+    		
+    		case Definicao.ISTORE0: {
+    			
+    			memoriaGlobal[0] = pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		case Definicao.ISTORE1: {
+    			
+    			memoriaGlobal[1] = pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		case Definicao.ISTORE2: {
+    			
+    			memoriaGlobal[2] = pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		case Definicao.ISTORE3: {
+    			
+    			memoriaGlobal[3] = pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		case Definicao.ISTORE: {
+    			
+    			op1 = obterOperandoInteiro();
+    			
+    			memoriaGlobal[op1] = pilhaOperandos[sp];
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		//operações lógicas
+    		
+    		case Definicao.IAND: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			op1 = op1 & op2;
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		case Definicao.IOR: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			op1 = op1 | op2;
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		case Definicao.IXOR: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp - 1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			op1 = op1 ^ op2;
+    			
+    			sp--;
+    			
+    		};break;
+    		
+    		//operações de desvio condicional
+    		
+    		case Definicao.IFEQ: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			if (op1 == 0) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IFNE: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			if (op1 != 0) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IFLT: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			if (op1 > 0) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IFGE: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			if (op1 >= 0) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IFGT: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			if (op1 > 0) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IFLE: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp];
+    			
+    			if (op1 <= 0) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IF_ICMPEQ: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp -1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    						
+    			if (op1 == op2) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IF_ICMPNE: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp -1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    						
+    			if (op1 != op2) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IF_ICMPLT: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp -1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    						
+    			if (op1 < op2) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IF_ICMPGE: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp -1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    						
+    			if (op1 >= op2) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IF_ICMPGT: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp -1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    						
+    			if (op1 > op2) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		case Definicao.IF_ICMPLE: {
+    			
+    			op1 = (Integer)pilhaOperandos[sp -1];
+    			
+    			op2 = (Integer)pilhaOperandos[sp];
+    			
+    			sp--;
+    						
+    			if (op1 <= op2) {
+    				
+    				desviar();
+    				
+    				desvio = true;
+    				
+    			} else
+    				
+    				pilhaOperandos[sp] = 0;
+    		      			
+    		};break;
+    		
+    		//desvio incondicional
+    		case Definicao.GOTO: {
+    			
+    			op1 = obterOperandoInteiro();
+    			
+    			ip = op1;
+    			
+    			desvio = true;
+    			
+    		};break;
     		   		
     		}
     		
-    		ip++;
+    		if (!desvio)
+    			
+    			ip++;
     		
     		
     	}
     	
+    	
+    }
+    
+    protected void desviar() {
+    	
+    	pilhaOperandos[sp] = 1;
+		
+		int op = obterOperandoInteiro();
+		
+		ip = op;
+		
     	
     }
     

@@ -25,6 +25,7 @@ aritmetica : a = 'iadd' {escreverOpcode($a);}
            | a = 'idiv' {escreverOpcode($a);}
            | a = 'irem' {escreverOpcode($a);}
            | a = 'iinc' {escreverOpcode($a);}
+           | a = 'ineg' {escreverOpcode($a);}
            ; 
            
 load : a = 'iconst_m1'{escreverOpcode($a);} 
@@ -49,8 +50,7 @@ store : a = 'istore_0' {verificarAumentoMemoriaGlobal($a);}
       | a = 'istore' INT {verificarAumentoMemoriaGlobal($a, $INT);}
       ;
 
-logica : a = 'ineg' {escreverOpcode($a);}
-       | a = 'iand' {escreverOpcode($a);}
+logica : a = 'iand' {escreverOpcode($a);}
        | a = 'ior' {escreverOpcode($a);}
        | a = 'ixor' {escreverOpcode($a);}
        ;

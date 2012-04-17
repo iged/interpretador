@@ -12,7 +12,7 @@ public class Test {
 	
     public static void main(String[] args) throws Exception {
     	
-        CharStream entrada = new ANTLRFileStream("entrada.txt");
+       CharStream entrada = new ANTLRFileStream("entrada.txt");
         
         AssemblerLexer lexer = new AssemblerLexer(entrada);
         
@@ -26,7 +26,7 @@ public class Test {
         	System.out.print(BytecodeAssembler.codigo[i] + " ");
         	
         }
-      
+        
         
     }
     
