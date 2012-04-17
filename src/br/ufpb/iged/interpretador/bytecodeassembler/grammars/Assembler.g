@@ -5,7 +5,7 @@ grammar Assembler;
   protected void escreverOpcode(Token opc);
   protected void escreverOpcode(Token opc, Token op) throws LabelException;
   protected void verificarAumentoMemoriaGlobal(Token opc) throws AcessoIndevidoMemoriaException;
-  protected void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException;
+  protected void verificarAumentoMemoriaGlobal(Token opc, Token op) throws AcessoIndevidoMemoriaException, LabelException;
   protected void definirLabel(Token id) throws LabelException;
   
 }

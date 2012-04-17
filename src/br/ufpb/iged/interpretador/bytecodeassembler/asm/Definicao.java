@@ -92,7 +92,7 @@ public class Definicao {
 		new Instrucao("iconst_1", Definicao.ICONST1),
 		new Instrucao("iconst_2", Definicao.ICONST2),
 	    new Instrucao("iconst_3", Definicao.ICONST3),
-	    new Instrucao("iconst_2", Definicao.ICONST4),
+	    new Instrucao("iconst_4", Definicao.ICONST4),
 	    new Instrucao("iconst_5", Definicao.ICONST5),
 	    new Instrucao("ldc", INT, Definicao.LDC),
 	    new Instrucao("iload", INT, Definicao.ILOAD),
