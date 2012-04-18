@@ -458,9 +458,13 @@ public class Interpretador {
     				
     				desvio = true;
     				
-    			} else
+    			} else {
     				
     				pilhaOperandos[sp] = 0;
+    				
+    				ip += 4;
+    				
+    			}
     		      			
     		};break;
     		
@@ -478,9 +482,13 @@ public class Interpretador {
     				
     				desvio = true;
     				
-    			} else
+    			} else {
     				
     				pilhaOperandos[sp] = 0;
+    				
+    				ip += 4;
+    				
+    			}
     		      			
     		};break;
     		
@@ -498,9 +506,13 @@ public class Interpretador {
     				
     				desvio = true;
     				
-    			} else
+    			} else {
     				
     				pilhaOperandos[sp] = 0;
+    				
+    				ip += 4;
+    				
+    			}
     		      			
     		};break;
     		
@@ -518,9 +530,15 @@ public class Interpretador {
     				
     				desvio = true;
     				
-    			} else
+    			} else {
     				
     				pilhaOperandos[sp] = 0;
+    				
+    				ip += 4;
+    				
+    			}
+    				
+    				
     		      			
     		};break;
     		
@@ -538,9 +556,13 @@ public class Interpretador {
     				
     				desvio = true;
     				
-    			} else
+    			} else {
     				
     				pilhaOperandos[sp] = 0;
+    				
+    				ip += 4;
+    				
+    			}
     		      			
     		};break;
     		
@@ -558,9 +580,13 @@ public class Interpretador {
     				
     				desvio = true;
     				
-    			} else
+    			} else {
     				
     				pilhaOperandos[sp] = 0;
+    				
+    				ip += 4;
+    				
+    			}
     		      			
     		};break;
     		
