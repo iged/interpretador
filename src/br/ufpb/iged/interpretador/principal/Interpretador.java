@@ -34,14 +34,14 @@ public class Interpretador {
 		InputStream entrada = new FileInputStream(NOME_ARQUIVO_ENTRADA);
 
 		Interpretador interpretador = new Interpretador();
-		carregar(interpretador, entrada);
-		interpretador.cpu();
+		if (carregar(interpretador, entrada))
+			interpretador.cpu();
 
 	}
 
 	public static boolean carregar(Interpretador interp, InputStream input)
 			throws Exception {
-		boolean hasErrors = false;
+		
 		try {
 			AssemblerLexer assemblerLexer = new AssemblerLexer(
 					new ANTLRInputStream(input));
@@ -49,6 +49,8 @@ public class Interpretador {
 			BytecodeAssembler assembler = new BytecodeAssembler(tokens,
 					Definicao.instrucoes);
 			assembler.programa();
+			if (assembler.getNumberOfSyntaxErrors() > 0)
+				return false;
 			interp.codigo = assembler.obterCodigoMaquina();
 			interp.tamanhoCodigo = assembler.obterTamanhoMemoriaCodigo();
 			interp.memoriaGlobal = new Object[assembler.getTamMemoriaGlobal()];
@@ -56,7 +58,8 @@ public class Interpretador {
 		} finally {
 			input.close();
 		}
-		return hasErrors;
+		return true;
+		
 	}
 
 	protected void cpu() {
