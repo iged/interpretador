@@ -14,7 +14,7 @@
 	    iconst_2;
 	    irem;
 	    istore 4;
-	 	iload_1;
+L1:	 	iload_1;
 	 	iload_2;
 	 	iadd;
 	 	istore 5;
@@ -24,5 +24,16 @@
 	 	istore 6;
 	 	ineg;
 	 	istore 7;
+	 	ldc 25;
+	 	if_icmpgt L1;
+	 	iconst_2;
+	 	imul;
+L2:	 	ineg;
+	 	ldc 4;
+	 	isub;
+	 	if_icmplt L2;
+	 	ldc 54;
+	 	iadd;
+	 	ifeq L1;
 	 	
 	
