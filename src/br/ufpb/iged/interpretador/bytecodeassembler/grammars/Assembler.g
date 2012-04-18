@@ -17,7 +17,10 @@ comando : (label instrucao | instrucao);
          
 label : a = ID ':' {definirLabel($a);};
 
-instrucao: (aritmetica | load | store | desvio | logica | 'nop')? NOVA_LINHA;
+instrucao: (aritmetica | load | store | desvio | logica | 'nop'
+              | a = 'pop' {escreverOpcode($a);}
+              | a = 'pop2'{escreverOpcode($a);}
+              )? NOVA_LINHA;
 
 aritmetica : a = 'iadd' {escreverOpcode($a);}
            | a = 'isub' {escreverOpcode($a);}
@@ -26,9 +29,9 @@ aritmetica : a = 'iadd' {escreverOpcode($a);}
            | a = 'irem' {escreverOpcode($a);}
            | a = 'iinc' {escreverOpcode($a);}
            | a = 'ineg' {escreverOpcode($a);}
-           ; 
+           ;
            
-load : a = 'iconst_m1'{escreverOpcode($a);} 
+load : a = 'iconst_m1'{escreverOpcode($a);}
      | a = 'iconst_0' {escreverOpcode($a);}
      | a = 'iconst_1' {escreverOpcode($a);}
      | a = 'iconst_2' {escreverOpcode($a);}
@@ -58,23 +61,23 @@ logica : a = 'iand' {escreverOpcode($a);}
 desvio : a = 'ifeq' b = ID {escreverOpcode($a, $b);}
        | a = 'ifne' b = ID {escreverOpcode($a, $b);}
        | a = 'iflt' b = ID {escreverOpcode($a, $b);}
-       | a = 'ifge' b = ID {escreverOpcode($a, $b);} 
-       | a = 'ifgt' b = ID {escreverOpcode($a, $b);} 
-       | a = 'ifle' b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpeq' b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpne' b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmplt' b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpge' b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmpgt' b = ID {escreverOpcode($a, $b);} 
-       | a = 'if_icmple' b = ID {escreverOpcode($a, $b);} 
+       | a = 'ifge' b = ID {escreverOpcode($a, $b);}
+       | a = 'ifgt' b = ID {escreverOpcode($a, $b);}
+       | a = 'ifle' b = ID {escreverOpcode($a, $b);}
+       | a = 'if_icmpeq' b = ID {escreverOpcode($a, $b);}
+       | a = 'if_icmpne' b = ID {escreverOpcode($a, $b);}
+       | a = 'if_icmplt' b = ID {escreverOpcode($a, $b);}
+       | a = 'if_icmpge' b = ID {escreverOpcode($a, $b);}
+       | a = 'if_icmpgt' b = ID {escreverOpcode($a, $b);}
+       | a = 'if_icmple' b = ID {escreverOpcode($a, $b);}
        | a = 'goto' b = ID {escreverOpcode($a, $b);}
-       ;        
+       ;
 
 NULL: ('null' | 'NULL');
 
 INT : '-'? '0'..'9'+ ;
 
-ID:  ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
+ID: ('a'..'z' | 'A'..'Z') ('a'..'z' | 'A'..'Z' | '0'..'9' | '.')* ;
 
 //LETRA: ('a'..'z' | 'A'..'Z');
 

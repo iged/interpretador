@@ -20,7 +20,9 @@ istore 36 54
 istore_0 3b 59 
 istore_1 3c 60 
 istore_2 3d 61 
-istore_3 3e 62 
+istore_3 3e 62
+pop 57  87
+pop2 58 88 
 iadd 60 96 
 isub 64 100 
 imul 68 104 
